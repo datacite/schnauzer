@@ -3,10 +3,10 @@ version: '2'
 services:
   poodle:
     env_file: .env
-    image: datacite/poodle
+    image: datacite/schnauzer
     build: .
     ports:
-      - "8075:80"
+      - "8055:80"
     volumes:
       - ./app:/home/app/webapp/app
       - ./config:/home/app/webapp/config
