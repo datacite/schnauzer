@@ -1,10 +1,12 @@
-version: '2'
+version: '2.1'
 
 services:
   web:
     env_file: .env
+    environment:
+      - LOG_LEVEL=info
+      - ELASTIC_PASSWORD=changeme
     image: datacite/schnauzer
-    build: .
     ports:
       - "8055:80"
     volumes:
@@ -12,5 +14,20 @@ services:
       - ./config:/home/app/webapp/config
       - ./lib:/home/app/webapp/lib
       - ./spec:/home/app/webapp/spec
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    networks:
+      - public
   memcached:
     image: memcached:1.4.31
+    networks:
+      - public
+networks:
+  public:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.0.50.0/24
+        gateway: 10.0.50.1

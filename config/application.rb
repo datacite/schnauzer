@@ -4,10 +4,10 @@ require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
-require "active_record/railtie"
+# require "active_record/railtie"
 require "active_storage/engine"
 require "action_controller/railtie"
-require "action_mailer/railtie"
+# require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
 # require "sprockets/railtie"
@@ -17,7 +17,35 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Poodle2
+# load ENV variables from .env file if it exists
+env_file = File.expand_path("../../.env", __FILE__)
+if File.exist?(env_file)
+  require 'dotenv'
+  Dotenv.load! env_file
+end
+
+# load ENV variables from container environment if json file exists
+# see https://github.com/phusion/baseimage-docker#envvar_dumps
+env_json_file = "/etc/container_environment.json"
+if File.exist?(env_json_file)
+  env_vars = JSON.parse(File.read(env_json_file))
+  env_vars.each { |k, v| ENV[k] = v }
+end
+
+# default values for some ENV variables
+ENV['APPLICATION'] ||= "re3data-api"
+ENV['MEMCACHE_SERVERS'] ||= "memcached:11211"
+ENV['SITE_TITLE'] ||= "DataCite re3data internal API"
+ENV['LOG_LEVEL'] ||= "info"
+ENV['ES_HOST'] ||= "elasticsearch:9200"
+ENV['ES_NAME'] ||= "elasticsearch"
+ENV['CONCURRENCY'] ||= "25"
+ENV['GITHUB_URL'] ||= "https://github.com/datacite/schnauzer"
+ENV['API_URL'] ||= "https://api.test.datacite.org"
+ENV['RE3DATA_URL'] ||= "https://www.re3data.org/api/beta"
+ENV['TRUSTED_IP'] ||= "10.0.50.1"
+
+module Schnauzer
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2

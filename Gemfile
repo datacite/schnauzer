@@ -1,28 +1,20 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.4.4'
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
-
-# Reduces boot times through caching; required in config/boot.rb
+gem 'dotenv'
+gem 'librato-rails', '~> 1.4.2'
+gem 'kaminari', '~> 1.0', '>= 1.0.1'
+gem 'elasticsearch-model', '~> 0.1.9', require: 'elasticsearch/model'
+gem 'elasticsearch-persistence', '~> 0.1.9', require: 'elasticsearch/persistence/model'
+gem 'elasticsearch-rails', '~> 0.1.9'
 gem 'bootsnap', '>= 1.1.0', require: false
-
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors', '~> 1.0', '>= 1.0.2', :require => 'rack/cors'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem "better_errors"
+  gem "binding_of_caller"
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -33,6 +25,14 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :test do
+  gem 'capybara'
+  gem 'webmock', '~> 3.1'
+  gem 'vcr', '~> 3.0.3'
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
+  gem 'simplecov'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'faker'
+  gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+  gem 'elasticsearch-extensions'
+end
