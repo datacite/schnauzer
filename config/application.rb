@@ -38,7 +38,6 @@ ENV['MEMCACHE_SERVERS'] ||= "memcached:11211"
 ENV['SITE_TITLE'] ||= "DataCite re3data internal API"
 ENV['LOG_LEVEL'] ||= "info"
 ENV['ES_HOST'] ||= "elasticsearch:9200"
-ENV['ES_NAME'] ||= "elasticsearch"
 ENV['CONCURRENCY'] ||= "25"
 ENV['GITHUB_URL'] ||= "https://github.com/datacite/schnauzer"
 ENV['API_URL'] ||= "https://api.test.datacite.org"
@@ -49,6 +48,8 @@ module Schnauzer
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    
+    # config.autoload_paths << Rails.root.join('lib')
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -59,5 +60,22 @@ module Schnauzer
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # secret_key_base is not used by Rails API, as there are no sessions
+    config.secret_key_base = 'blipblapblup'
+
+    # configure logging
+    logger = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
+    config.lograge.enabled = true
+    config.log_level = ENV['LOG_LEVEL'].to_sym
+
+    # add elasticsearch instrumentation to logs
+    require 'elasticsearch/rails/instrumentation'
+    require 'elasticsearch/rails/lograge'
+    
+    # configure caching
+    config.cache_store = :dalli_store, nil, { :namespace => ENV['APPLICATION'] }
   end
 end

@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://<ELASTIC_USER>:<ELASTIC_PASSWORD>@<ES_HOST>/frontend/repository/_search
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.0
+      Authorization:
+      - Basic YWd1OlJhbmRvbU51bWJlcklzNA==
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 29 Apr 2018 19:00:35 GMT
+      Server:
+      - Apache/2.4.18 (Ubuntu)
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '8193'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":22,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":2053,"max_score":null,"hits":[{"_index":"frontend","_type":"repository","_id":"1097","_score":null,"_source":{"repositoryName":"1.2
+        Meter CO Survey Dataverse","repositoryNameLanguage":"eng","repositoryUrl":"https://dataverse.harvard.edu/dataverse/rtdc","description":"The
+        Radio Telescope Data Center (RTDC) reduces, archives, and makes available
+        on its web site data from SMA and the CfA Millimeter-wave Telescope. The whole-Galaxy
+        CO survey presented in Dame et al. (2001) is a composite of 37 separate surveys.
+        The data from most of these surveys can be accessed. Larger composites of
+        these surveys are available separately.","descriptionLanguage":"eng","size":"40
+        datasets; 256 files","sizeUpdated":"2017-01-25","startDate":"2012","endDate":null,"missionStatementUrl":"http://www.cfa.harvard.edu/rtdc/CO/","versioning":"yes","citationGuidelineUrl":"http://best-practices.dataverse.org/data-citation/#data-citation-standard","enhancedPublication":"yes","qualityManagement":"yes","remarks":"1.2
+        Meter CO Survey Dataverse is covered by Thomson Reuters Data Citation Index.
+        1.2 Meter CO Survey Dataverse is part of CfA Dataverses, and uses Data Documentation
+        Initiative - DDI metadata standards","created":"2014-12-16T09:39:18+01:00","updated":"2017-12-13T10:53:16+01:00","repositoryLanguages":[{"text":"eng"}],"types":[{"text":"disciplinary"},{"text":"other"}],"additionalNames":[],"repositoryIdentifiers":[],"repositoryContacts":[{"text":"http://thedata.harvard.edu/dvn/dv/rtdc/faces/ContactUsPage.xhtml"}],"subjects":[{"scheme":"DFG","text":"311
+        Astrophysics and Astronomy"},{"scheme":"DFG","text":"32 Physics"},{"scheme":"DFG","text":"3
+        Natural Sciences"}],"contentTypes":[{"scheme":"parse","text":"Raw data"},{"scheme":"parse","text":"Scientific
+        and statistical data formats"},{"scheme":"parse","text":"Archived data"},{"scheme":"parse","text":"Plain
+        text"},{"scheme":"parse","text":"Images"}],"providerTypes":[{"text":"dataProvider"}],"keywords":[{"text":"physical
+        sciences"},{"text":"radio telescope"}],"institutions":[{"country":"USA","responsibilityStartDate":null,"identifiers":[],"name":"Smithsonian
+        Astrophysical Observatory, Radio Telescope Data Center","responsibilityTypes":[{"text":"general"}],"type":"non-profit","nameLanguage":"eng","responsibilityEndDate":null,"url":"http://www.cfa.harvard.edu/rtdc/CO/","additionalNames":[{"language":"eng","text":"RTDC"},{"language":"eng","text":"SAO"}],"contacts":[{"text":"http://www.cfa.harvard.edu/about/contact"}]},{"country":"USA","responsibilityStartDate":null,"identifiers":[],"name":"Cfa
+        Dataverses","responsibilityTypes":[{"text":"technical"}],"type":"non-profit","nameLanguage":"eng","responsibilityEndDate":null,"url":"http://thedata.harvard.edu/dvn/dataverses/cfa","additionalNames":[{"language":"eng","text":"Harvard-Smithsonian
+        Center for Astrophysics Dataverses"}],"contacts":[{"text":"http://www.cfa.harvard.edu/about/contact"}]},{"country":"AAA","responsibilityStartDate":null,"identifiers":[],"name":"Dataverse
+        Project","responsibilityTypes":[{"text":"technical"}],"type":"non-profit","nameLanguage":"eng","responsibilityEndDate":null,"url":"http://dataverse.org/","additionalNames":[],"contacts":[{"text":"support@dataverse.org"}]},{"country":"AAA","responsibilityStartDate":null,"identifiers":[],"name":"Harvard
+        Dataverse","responsibilityTypes":[{"text":"technical"}],"type":"non-profit","nameLanguage":"eng","responsibilityEndDate":null,"url":"https://dataverse.harvard.edu/","additionalNames":[],"contacts":[]}],"policies":[{"name":"Smithsonian
+        Institution Terms of Use","url":"http://www.si.edu/Termsofuse"},{"name":"Harvard
+        Dataverse Policies","url":"http://best-practices.dataverse.org/harvard-policies/"},{"name":"Dataverse
+        Guides","url":"http://guides.dataverse.org/en/latest/"},{"name":"Community-norms","url":"http://best-practices.dataverse.org/harvard-policies/community-norms.html"}],"databaseLicenses":[{"name":"Apache
+        License 2.0","url":"http://www.apache.org/licenses/LICENSE-2.0"}],"dataAccesses":[{"restrictions":[],"type":"open"}],"dataLicenses":[{"name":"Public
+        Domain","url":"http://www.si.edu/Termsofuse"},{"name":"other","url":"http://www.si.edu/Termsofuse"},{"name":"Copyrights","url":"http://www.copyright.gov/fls/fl102.html"},{"name":"other","url":"http://best-practices.dataverse.org/harvard-policies/harvard-terms-of-use.html"}],"dataUploads":[{"restrictions":[],"type":"closed"}],"dataUploadLicenses":[],"software":[{"name":"DataVerse"}],"apis":[{"type":"SWORD","url":"http://guides.dataverse.org/en/latest/api/sword.html"},{"type":"REST","url":"http://guides.dataverse.org/en/latest/api/native-api.html"}],"pidSystems":[{"text":"hdl"}],"aidSystems":[],"certificates":[],"metadataStandards":[{"metadataStandardName":"DDI
+        - Data Documentation Initiative","metadataStandardScheme":"DCC","metadataStandardUrl":"http://www.dcc.ac.uk/resources/metadata-standards/ddi-data-documentation-initiative"}],"syndications":[],"databaseAccess":{"type":"open","restrictions":[]},"identifier":{"re3data":100011322,"doi":"10.17616/R3KG99"}},"sort":["1.2"]},{"_index":"frontend","_type":"repository","_id":"1268","_score":null,"_source":{"repositoryName":"1000
+        Functional Connectomes Project","repositoryNameLanguage":"eng","repositoryUrl":"http://fcon_1000.projects.nitrc.org/","description":"The
+        FCP entailed the aggregation and public release (via www.nitrc.org) of over
+        1200 resting state fMRI (R-fMRI) datasets collected from 33 sites around the
+        world.","descriptionLanguage":"eng","size":null,"sizeUpdated":null,"startDate":null,"endDate":null,"missionStatementUrl":null,"versioning":null,"citationGuidelineUrl":null,"enhancedPublication":"yes","qualityManagement":"no","remarks":null,"created":"2015-02-19T09:39:18+01:00","updated":"2017-05-17T15:27:34+02:00","repositoryLanguages":[{"text":"eng"}],"types":[{"text":"disciplinary"}],"additionalNames":[],"repositoryIdentifiers":[{"text":"RRID:SCR_005361"},{"text":"RRID:nlx_144428"}],"repositoryContacts":[{"text":"moderator@nitrc.org"}],"subjects":[{"text":"20606
+        Cognitive Neuroscience and Neuroimaging","scheme":"DFG"},{"text":"20604 Systemic
+        Neuroscience, Computational Neuroscience, Behaviour","scheme":"DFG"},{"text":"206
+        Neurosciences","scheme":"DFG"},{"text":"22 Medicine","scheme":"DFG"},{"text":"2
+        Life Sciences","scheme":"DFG"}],"contentTypes":[{"text":"Archived data","scheme":"parse"},{"text":"Structured
+        text","scheme":"parse"},{"text":"Scientific and statistical data formats","scheme":"parse"},{"text":"Raw
+        data","scheme":"parse"},{"text":"Software applications","scheme":"parse"}],"providerTypes":[{"text":"dataProvider"}],"keywords":[{"text":"mental
+        health"}],"institutions":[{"additionalNames":[{"text":"NITRC","language":"eng"}],"identifiers":[],"responsibilityEndDate":null,"name":"Neuroimaging
+        Informatics Tools and Resources Clearinghouse","type":"commercial","responsibilityTypes":[{"text":"general"},{"text":"technical"}],"url":"http://www.nitrc.org/","nameLanguage":"eng","contacts":[{"text":"moderator@nitrc.org"}],"responsibilityStartDate":null,"country":"USA"},{"additionalNames":[],"identifiers":[],"responsibilityEndDate":null,"name":"Child
+        Mind Institute","type":"non-profit","responsibilityTypes":[{"text":"funding"}],"url":"http://www.childmind.org/","nameLanguage":"eng","contacts":[{"text":"http://www.childmind.org/en/contact/"}],"responsibilityStartDate":null,"country":"USA"}],"policies":[{"name":"Disclaimer","url":"http://fcon1000.projects.nitrc.org/fcpClassic/FcpTable.html"}],"databaseLicenses":[],"dataAccesses":[{"restrictions":[],"type":"open"}],"dataLicenses":[{"name":"CC","url":"http://www.nitrc.org/include/glossary.php#546"}],"dataUploads":[{"restrictions":[{"text":"registration"}],"type":"restricted"}],"dataUploadLicenses":[],"software":[{"name":"unknown"}],"apis":[],"pidSystems":[{"text":"none"}],"aidSystems":[{"text":"none"}],"certificates":[],"metadataStandards":[],"syndications":[{"type":"RSS","url":"http://www.nitrc.org/export/rss20_newreleases.php?group_id=296"}],"databaseAccess":{"type":"open","restrictions":[]},"identifier":{"re3data":100011565,"doi":"10.17616/R3W05R"}},"sort":["1000"]}]}}'
+    http_version: 
+  recorded_at: Sun, 29 Apr 2018 19:01:08 GMT
+recorded_with: VCR 3.0.3

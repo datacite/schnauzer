@@ -5,7 +5,6 @@ services:
     env_file: .env
     environment:
       - LOG_LEVEL=info
-      - ELASTIC_PASSWORD=changeme
     image: datacite/schnauzer
     ports:
       - "8055:80"
@@ -14,9 +13,6 @@ services:
       - ./config:/home/app/webapp/config
       - ./lib:/home/app/webapp/lib
       - ./spec:/home/app/webapp/spec
-    depends_on:
-      elasticsearch:
-        condition: service_healthy
     networks:
       - public
   memcached:

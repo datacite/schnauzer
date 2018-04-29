@@ -1,0 +1,103 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://<ELASTIC_USER>:<ELASTIC_PASSWORD>@<ES_HOST>/frontend/repository/_search
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.0
+      Authorization:
+      - Basic YWd1OlJhbmRvbU51bWJlcklzNA==
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 29 Apr 2018 19:00:33 GMT
+      Server:
+      - Apache/2.4.18 (Ubuntu)
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '11113'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":38,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":2053,"max_score":null,"hits":[{"_index":"frontend","_type":"repository","_id":"1896","_score":null,"_source":{"repositoryName":"West
+        of Scotland Twenty-07 Study","repositoryNameLanguage":"eng","repositoryUrl":"http://2007study.sphsu.mrc.ac.uk/","description":"The
+        Twenty-07 Study was set up in 1986 in order to investigate the reasons for
+        differences in health by socio-economic circumstances, gender, area of residence,
+        age, ethnic group, and family type.\r\n\r\n4510 people are being followed
+        for 20 years. The initial wave of data collection took place in 1987/8, when
+        respondents were aged 15, 35 and 55. The final wave of data collection took
+        place in 2007/08 when respondents were aged 35, 55 and 75.\r\n\r\nIn this
+        way the Twenty-07 Study provides us with unique opportunities to investigate
+        both the changes in people''s lives over 20 years and how they affect their
+        health, and the differences in people''s experiences at the same ages 20 years
+        apart, and how these have different effects on their health.","descriptionLanguage":"eng","size":null,"sizeUpdated":null,"startDate":"1987","endDate":null,"missionStatementUrl":"http://2007study.sphsu.mrc.ac.uk/about-twenty-07.html","versioning":null,"citationGuidelineUrl":null,"enhancedPublication":"yes","qualityManagement":"yes","remarks":"West
+        of Scotland Twenty-07 Study is covered by Thomson Reuters Data Citation Index.","created":"2016-03-03T14:46:37+01:00","updated":"2016-03-22T10:34:08+01:00","repositoryLanguages":[{"text":"eng"}],"types":[{"text":"disciplinary"}],"additionalNames":[],"repositoryIdentifiers":[],"repositoryContacts":[{"text":"http://2007study.sphsu.mrc.ac.uk/contact-us.html"},{"text":"http://2007study.sphsu.mrc.ac.uk/Last-data-collection.html"},{"text":"sphsu-twenty07@glasgow.ac.uk"}],"subjects":[{"text":"111
+        Social Sciences","scheme":"DFG"},{"text":"20502 Public Health, Health Services
+        Research, Social Medicine","scheme":"DFG"},{"text":"12 Social and Behavioural
+        Sciences","scheme":"DFG"},{"text":"1 Humanities and Social Sciences","scheme":"DFG"},{"text":"205
+        Medicine","scheme":"DFG"},{"text":"22 Medicine","scheme":"DFG"},{"text":"2
+        Life Sciences","scheme":"DFG"}],"contentTypes":[{"text":"Standard office documents","scheme":"parse"},{"text":"Audiovisual
+        data","scheme":"parse"},{"text":"other","scheme":"parse"}],"providerTypes":[{"text":"dataProvider"}],"keywords":[{"text":"cohort
+        study"},{"text":"gender"},{"text":"area of residence"},{"text":"family type"},{"text":"ethnic
+        group"},{"text":"health inequalities"},{"text":"Scotland"},{"text":"HIV"},{"text":"behaviours"},{"text":"biological
+        samples"},{"text":"heart diseases"},{"text":"cancer"},{"text":"physical health"},{"text":"beliefs"},{"text":"life
+        circumstances"}],"institutions":[{"name":"UK Medical Research Council","nameLanguage":"eng","country":"GBR","type":"non-profit","url":"http://www.mrc.ac.uk/","responsibilityStartDate":null,"responsibilityEndDate":null,"additionalNames":[{"text":"MRC","language":"eng"}],"responsibilityTypes":[{"text":"funding"}],"identifiers":[],"contacts":[{"text":"http://www.mrc.ac.uk/research/facilities/cohort-directory/west-of-scotland-twenty-07-study-twenty-07/"},{"text":"http://www.mrc.ac.uk/about/contact/"}]},{"name":"MRC
+        Social and Public Health Sciences Unit","nameLanguage":"eng","country":"GBR","type":"non-profit","url":"http://www.sphsu.mrc.ac.uk/","responsibilityStartDate":null,"responsibilityEndDate":null,"additionalNames":[{"text":"SPHSU","language":"eng"}],"responsibilityTypes":[{"text":"technical"},{"text":"general"}],"identifiers":[],"contacts":[{"text":"survadmin@sphsu.mrc.ac.uk"},{"text":"http://www.sphsu.mrc.ac.uk/contact-sphsu.html"}]}],"policies":[{"name":"Data
+        Sharing","url":"http://2007study.sphsu.mrc.ac.uk/Information-on-data-sharing.html"}],"databaseLicenses":[],"dataAccesses":[{"type":"restricted","restrictions":[{"text":"other"},{"text":"registration"}]},{"type":"closed","restrictions":[]}],"dataLicenses":[{"name":"other","url":"http://2007study.sphsu.mrc.ac.uk/Twenty07_DataSharingPolicy"},{"name":"other","url":"http://2007study.sphsu.mrc.ac.uk/Data-Sharing-Form.html"},{"name":"other","url":"http://2007study.sphsu.mrc.ac.uk/Twenty07_data_app_guidance"}],"dataUploads":[{"type":"closed","restrictions":[]}],"dataUploadLicenses":[],"software":[{"name":"unknown"}],"apis":[],"pidSystems":[{"text":"none"}],"aidSystems":[],"certificates":[],"metadataStandards":[],"syndications":[],"databaseAccess":{"type":"restricted","restrictions":[{"text":"other"}]},"identifier":{"re3data":100011853,"doi":"10.17616/R3K92X"}},"sort":["07"]},{"_index":"frontend","_type":"repository","_id":"2041","_score":null,"_source":{"repositoryName":"RADARSAT-1","repositoryNameLanguage":"eng","repositoryUrl":"http://www.asc-csa.gc.ca/eng/satellites/radarsat1/default.asp","description":"Launched
+        in November 1995, RADARSAT-1 provided Canada and the world with an operational
+        radar satellite system capable of timely delivery of large amounts of data.
+        Equipped with a powerful synthetic aperture radar (SAR) instrument, it acquired
+        images of the Earth day or night, in all weather and through cloud cover,
+        smoke and haze.\r\nRADARSAT-1 was a Canadian-led project involving the Canadian
+        federal government, the Canadian provinces, the United States, and the private
+        sector. It provided useful information to both commercial and scientific users
+        in such fields as disaster management, interferometry, agriculture, cartography,
+        hydrology, forestry, oceanography, ice studies and coastal monitoring.","descriptionLanguage":"eng","size":null,"sizeUpdated":null,"startDate":"1995-11-04","endDate":"2013","missionStatementUrl":"http://mdacorporation.com/geospatial/international/satellites/RADARSAT-1","versioning":null,"citationGuidelineUrl":"https://www.asf.alaska.edu/sar-data/radarsat-1/how-to-cite/","enhancedPublication":"unknown","qualityManagement":"yes","remarks":"Access
+        to data is provided by Canadian Space Agency, MDA and Alaska Satellite Facility
+        Order Desk, in Fairbanks, Alaska http://www.asc-csa.gc.ca/eng/satellites/radarsat1/contact.asp
+        .\r\nCanada Centre for Remote Sensing (CCRS) operates two satellite telemetry
+        ground stations that provide North American reception coverage: the Prince
+        Albert Satellite Station in Prince Albert, Saskatchewan, and the Gatineau
+        Satellite Station located in Cantley, Quebec. Operating in a multi-mission
+        environment, these stations receive Earth observation data from several satellites.
+        They have created an archive in excess of 270 Terabytes of EO data. Certain
+        data sets are delivered in near real time to support applications such as
+        ice monitoring by the Canadian Ice Service, since 1991, and forest fire monitoring
+        and mapping by the Canadian Forest Service, since 1999. These stations serve
+        also as Canadian ground segment component of RADARSAT-1 operation.","created":"2016-05-10T20:10:40+02:00","updated":"2016-05-25T08:00:10+02:00","repositoryLanguages":[{"text":"eng"},{"text":"fra"}],"types":[{"text":"disciplinary"}],"additionalNames":[{"text":"Canada''s
+        Earth Observation Satellite","language":"eng"}],"repositoryIdentifiers":[],"repositoryContacts":[{"text":"http://www.asc-csa.gc.ca/eng/satellites/radarsat1/contact.asp"},{"text":"http://www.asf.alaska.edu/program/sdc/satellites"}],"subjects":[{"text":"20709
+        Inventory Control and Use of Forest Resources","scheme":"DFG"},{"text":"313
+        Atmospheric Science and Oceanography","scheme":"DFG"},{"text":"31301 Atmospheric
+        Science","scheme":"DFG"},{"text":"34 Geosciences (including Geography)","scheme":"DFG"},{"text":"31302
+        Oceanography","scheme":"DFG"},{"text":"317 Geography","scheme":"DFG"},{"text":"318
+        Water Research","scheme":"DFG"},{"text":"31801 Hydrogeology, Hydrology, Limnology,
+        Urban Water Management, Water Chemistry, Integrated Water Resources Management","scheme":"DFG"},{"text":"207
+        Agriculture, Forestry, Horticulture and Veterinary Medicine","scheme":"DFG"},{"text":"23
+        Agriculture, Forestry, Horticulture and Veterinary Medicine","scheme":"DFG"},{"text":"2
+        Life Sciences","scheme":"DFG"},{"text":"3 Natural Sciences","scheme":"DFG"},{"text":"31502
+        Geodesy, Photogrammetry, Remote Sensing, Geoinformatics, Cartogaphy","scheme":"DFG"},{"text":"315
+        Geophysics and Geodesy","scheme":"DFG"}],"contentTypes":[{"text":"Images","scheme":"parse"},{"text":"Raw
+        data","scheme":"parse"}],"providerTypes":[{"text":"dataProvider"}],"keywords":[{"text":"aerospace"},{"text":"synthetic
+        aperture radar (SAR)"},{"text":"observation satellite"},{"text":"images"},{"text":"disaster
+        management"},{"text":"forestry"},{"text":"interferometry"},{"text":"cartography"},{"text":"hydrology"},{"text":"oceanography"},{"text":"ice
+        studies"},{"text":"coastal monitoring"},{"text":"remote sensing"},{"text":"earth
+        observation"},{"text":"Antarctic Mapping Mission - AMM"}],"institutions":[{"name":"Canadian
+        Space Agency","nameLanguage":"eng","country":"CAN","type":"non-profit","url":"http://www.asc-csa.gc.ca/eng/default.asp","responsibilityStartDate":null,"responsibilityEndDate":null,"additionalNames":[{"text":"Agence
+        spatiale canadienne","language":"fra"}],"responsibilityTypes":[{"text":"general"},{"text":"funding"}],"identifiers":[],"contacts":[{"text":"http://www.asc-csa.gc.ca/eng/satellites/radarsat1/contact.asp"}]},{"name":"MDA,
+        Geospatial Services","nameLanguage":"eng","country":"AAA","type":"commercial","url":"http://mdacorporation.com/geospatial/international","responsibilityStartDate":null,"responsibilityEndDate":null,"additionalNames":[{"text":"MacDonald,
+        Dettwiler and Associates Ltd","language":"eng"},{"text":"MDA GSI","language":"eng"}],"responsibilityTypes":[{"text":"general"},{"text":"technical"}],"identifiers":[],"contacts":[{"text":"http://mdacorporation.com/geospatial/international/satellites/RADARSAT-1"}]}],"policies":[{"name":"RADARSAT-1
+        End User License Agreement","url":"http://mdacorporation.com/docs/default-source/licence-agreements/geospatial-services/radarsat-1-eula-2007.pdf?sfvrsn=6"},{"name":"General
+        Terms of Use","url":"http://mdacorporation.com/docs/default-source/general-terms-of-use/geospatial-services/gtu.pdf?sfvrsn=4"},{"name":"RADARSAT-1
+        Data Products Specifications","url":"http://mdacorporation.com/docs/default-source/product-spec-sheets/geospatial-services/r1_prod_spec.pdf?sfvrsn=6"}],"databaseLicenses":[],"dataAccesses":[{"type":"restricted","restrictions":[{"text":"feeRequired"},{"text":"other"}]}],"dataLicenses":[{"name":"Copyrights","url":"http://www.asc-csa.gc.ca/eng/terms.asp#copyright"},{"name":"other","url":"http://mdacorporation.com/docs/default-source/general-terms-of-use/geospatial-services/gtu.pdf?sfvrsn=4"}],"dataUploads":[{"type":"closed","restrictions":[]}],"dataUploadLicenses":[],"software":[{"name":"unknown"}],"apis":[{"url":"https://www.asf.alaska.edu/","type":"other"}],"pidSystems":[{"text":"none"}],"aidSystems":[],"certificates":[],"metadataStandards":[],"syndications":[],"databaseAccess":{"type":"restricted","restrictions":[{"text":"other"}]},"identifier":{"re3data":100011995,"doi":"10.17616/R3Z35D"}},"sort":["1"]}]}}'
+    http_version: 
+  recorded_at: Sun, 29 Apr 2018 19:01:05 GMT
+recorded_with: VCR 3.0.3
