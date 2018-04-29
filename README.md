@@ -1,6 +1,6 @@
 # DataCite re3data internal API
 
-[![Build Status](https://travis-ci.org/datacite/schnauzer.svg?branch=master)](https://travis-ci.org/datacite/schnauzer) [![Docker Build Status](https://img.shields.io/docker/build/datacite/schnauzer.svg)](https://hub.docker.com/r/datacite/schnauzer/)
+[![Build Status](https://travis-ci.org/datacite/schnauzer.svg?branch=master)](https://travis-ci.org/datacite/schnauzer) [![Docker Build Status](https://img.shields.io/docker/build/datacite/schnauzer.svg)](https://hub.docker.com/r/datacite/schnauzer/) [![Maintainability](https://api.codeclimate.com/v1/badges/4032e94f759b56d71885/maintainability)](https://codeclimate.com/github/datacite/schnauzer/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/4032e94f759b56d71885/test_coverage)](https://codeclimate.com/github/datacite/schnauzer/test_coverage)
 
 ## Installation
 
