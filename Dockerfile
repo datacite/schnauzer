@@ -37,10 +37,9 @@ COPY vendor/docker/00_app_env.conf /etc/nginx/conf.d/00_app_env.conf
 COPY vendor/docker/ntp.conf /etc/ntp.conf
 
 # Copy webapp folder
-COPY . /home/app/webapp/
+COPY --chown=app:app . /home/app/webapp
 RUN mkdir -p /home/app/webapp/tmp/pids && \
     mkdir -p /home/app/webapp/vendor/bundle && \
-    chown -R app:app /home/app/webapp && \
     chmod -R 755 /home/app/webapp
 
 # Install Ruby gems
