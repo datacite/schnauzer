@@ -43,22 +43,18 @@ COPY vendor/docker/00_app_env.conf /etc/nginx/conf.d/00_app_env.conf
 # Use Amazon NTP servers
 COPY vendor/docker/ntp.conf /etc/ntp.conf
 
-# Install Ruby gems
-COPY Gemfile* /home/app/webapp/
-WORKDIR /home/app/webapp
-RUN mkdir -p vendor/bundle && \
-    chown -R app:app . && \
-    chmod -R 755 . && \
-    gem update --system && \
-    gem install bundler && \
-    /sbin/setuser app bundle install --path vendor/bundle
-
 # Copy webapp folder
 COPY . /home/app/webapp/
-RUN mkdir -p tmp/pids && \
-    mkdir -p tmp/storage && \
+RUN mkdir -p /home/app/webapp/tmp/pids && \
+    mkdir -p /home/app/webapp/vendor/bundle && \
     chown -R app:app /home/app/webapp && \
     chmod -R 755 /home/app/webapp
+
+# Install Ruby gems
+WORKDIR /home/app/webapp
+RUN gem update --system && \
+    gem install bundler && \
+    /sbin/setuser app bundle install --path vendor/bundle
 
 # Run additional scripts during container startup (i.e. not at build time)
 RUN mkdir -p /etc/my_init.d
