@@ -1,4 +1,4 @@
-FROM phusion/passenger-full:0.9.29
+FROM phusion/passenger-full:0.9.30
 LABEL maintainer="mfenner@datacite.org"
 
 # Set correct environment variables.
@@ -15,7 +15,7 @@ CMD ["/sbin/my_init"]
 RUN bash -lc 'rvm --default use ruby-2.4.4'
 
 # Update installed APT packages
-RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && \
+RUN apt-get update -y -o Dpkg::Options::="--force-confold" && \
     apt-get install ntp wget tzdata -y && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -37,9 +37,10 @@ COPY vendor/docker/00_app_env.conf /etc/nginx/conf.d/00_app_env.conf
 COPY vendor/docker/ntp.conf /etc/ntp.conf
 
 # Copy webapp folder
-COPY --chown=app:app . /home/app/webapp
+COPY . /home/app/webapp/
 RUN mkdir -p /home/app/webapp/tmp/pids && \
     mkdir -p /home/app/webapp/vendor/bundle && \
+    chown -R app:app /home/app/webapp && \
     chmod -R 755 /home/app/webapp
 
 # Install Ruby gems
