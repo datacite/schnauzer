@@ -1,5 +1,5 @@
 class RepositorySerializer < ActiveModel::Serializer
-  attributes :repositoryName, :repositoryUrl, :description, :types, 
+  attributes :repositoryName, :repositoryUrl, :repositoryContacts, :description, :types, 
     :additionalNames, :subjects, :contentTypes, :providerTypes, 
     :keywords, :institutions, :dataUploads, :dataUploadLicenses,
     :apis, :pidSystems, :startDate, :endDate, :created, :updated

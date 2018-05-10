@@ -11,6 +11,7 @@ class Repository
   attribute :identifier, Hash, mapping: { type: 'keyword' }
   attribute :repositoryName, String, mapping: { type: 'text', fields: { keyword: { type: "keyword" }}}
   attribute :repositoryUrl, String, mapping: { type: 'text' }
+  attribute :repositoryContacts, String, mapping: { type: 'text' }
   attribute :description, String, mapping: { type: 'text' }
   attribute :startDate, DateTime, mapping: { type: :date }
   attribute :endDate, DateTime, mapping: { type: :date }
@@ -31,7 +32,7 @@ class Repository
 
   def self.query_aggregations
     {
-      years: { date_histogram: { field: 'created', interval: 'year', min_doc_count: 1 } }
+      subjects: { terms: { field: 'subjects', size: 15, min_doc_count: 1 } }
     }
   end
 
