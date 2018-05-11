@@ -1,7 +1,7 @@
 class RepositorySerializer < ActiveModel::Serializer
-  attributes :repositoryName, :repositoryUrl, :repositoryContacts, :description, :types, 
+  attributes :repositoryName, :repositoryUrl, :repositoryContacts, :description, :certificates, :types, 
     :additionalNames, :subjects, :contentTypes, :providerTypes, 
-    :keywords, :institutions, :dataUploads, :dataUploadLicenses,
+    :keywords, :institutions, :dataAccesses, :dataUploads, :dataUploadLicenses, :pidSystems,
     :apis, :pidSystems, :startDate, :endDate, :created, :updated
 
   def id

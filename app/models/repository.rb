@@ -22,11 +22,14 @@ class Repository
   attribute :additionalNames, Array, default: [], mapping: { type: 'text' }
   attribute :subjects, Array, default: [], mapping: { type: 'text' }
   attribute :contentTypes, Array, default: [], mapping: { type: 'text' }
+  attribute :certificates, Array, default: [], mapping: { type: 'text' }
   attribute :providerTypes, Array, default: [], mapping: { type: 'text' }
   attribute :keywords, Array, default: [], mapping: { type: 'text' }
   attribute :institutions, Array, default: [], mapping: { type: 'text' }
+  attribute :dataAccesses, Array, default: [], mapping: { type: 'text' }
   attribute :dataUploads, Array, default: [], mapping: { type: 'text' }
   attribute :dataUploadLicenses, Array, default: [], mapping: { type: 'text' }
+  attribute :pidSystems, Array, default: [], mapping: { type: 'text' }
   attribute :apis, Array, default: [], mapping: { type: 'text' }
   attribute :pidSystems, Array, default: [], mapping: { type: 'text' }
 

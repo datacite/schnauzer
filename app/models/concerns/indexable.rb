@@ -17,7 +17,7 @@ module Indexable
         size: options[:size],
         sort: [options[:sort]],
         query: {
-          filtered: {
+          function_score: {
             query: {
               multi_match: {
                 query: query,
@@ -25,9 +25,10 @@ module Indexable
                 zero_terms_query: "all"
               }
             },
-            filter: query_filter(options)
+            functions: query_functions(options)
           }
-        }
+        },
+        explain: true
       })
     end
 
@@ -35,23 +36,73 @@ module Indexable
       ['repositoryName^5', 'description^5', 'keywords.text^5', 'subjects.text^5', '_all']
     end
 
-    def query_filter(options = {})
-      return nil unless options[:subject].present?
-
-      {
-        nested: {
-          path: "subjects",
+    def query_functions(options = {})
+      [
+        {
+          weight: 10,
           filter: {
-            bool: {
-              must: {
-                regexp: {
-                  "subjects.text" => "#{options[:subject]}.*"
-                }
-              }
+            regexp: {
+              "subjects.text" => "#{options[:subject]}.*"
+            }
+          }
+        },
+        {
+          weight: 3,
+          filter: {
+            regexp: {
+              "types.text" => "disciplinary"
+            }
+          }
+        },
+        {
+          weight: 3,
+          filter: {
+            regexp: {
+              "dataAccesses.type" => "open"
+            }
+          }
+        },
+        {
+          weight: 3,
+          filter: {
+            regexp: {
+              "dataUploads.text" => "open"
+            }
+          }
+        },
+        {
+          weight: 0.0001,
+          filter: {
+            regexp: {
+              "dataUploads.text" => "closed"
+            }
+          }
+        },
+        {
+          weight: 3,
+          filter: {
+            regexp: {
+              "certificates.text" => ".+"
+            }
+          }
+        },
+        {
+          weight: 0.0001,
+          filter: {
+            regexp: {
+              "pidSystems.text" => "none"
+            }
+          }
+        },
+        {
+          weight: 0.0001,
+          filter: {
+            regexp: {
+              "endDate" => ".+"
             }
           }
         }
-      }
+      ]
     end
   end
 end
