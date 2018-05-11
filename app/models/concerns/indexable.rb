@@ -11,37 +11,18 @@ module Indexable
       fail Elasticsearch::Transport::Transport::Errors::NotFound
     end
 
-    # def query(query, options={})
-    #   __elasticsearch__.search({
-    #     from: options[:from],
-    #     size: options[:size],
-    #     sort: [options[:sort]],
-    #     query: {
-    #       bool: {
-    #         must: {
-    #           query_string: {
-    #             query: query + "*",
-    #             fields: query_fields
-    #           }
-    #         },
-    #         filter: query_filter(options)
-    #       }
-    #     },
-    #     aggregations: query_aggregations
-    #   })
-    # end
-
     def query(query, options={})
       __elasticsearch__.search({
         from: options[:from],
         size: options[:size],
         sort: [options[:sort]],
         query: {
-          bool: {
-            must: {
-              query_string: {
-                query: query + "*",
-                fields: query_fields
+          filtered: {
+            query: {
+              multi_match: {
+                query: query,
+                fields: query_fields,
+                zero_terms_query: "all"
               }
             },
             filter: query_filter(options)
@@ -51,15 +32,24 @@ module Indexable
     end
 
     def query_fields
-      ['repositoryName^10', 'description^10', '_all']
+      ['repositoryName^5', 'description^5', 'keywords.text^5', 'subjects.text^5', '_all']
     end
 
     def query_filter(options = {})
-      return nil unless options[:year].present?
+      return nil unless options[:subject].present?
 
       {
-        terms: {
-          year: options[:year].split(",")
+        nested: {
+          path: "subjects",
+          filter: {
+            bool: {
+              must: {
+                regexp: {
+                  "subjects.text" => "#{options[:subject]}.*"
+                }
+              }
+            }
+          }
         }
       }
     end

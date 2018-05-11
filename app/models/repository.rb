@@ -9,7 +9,7 @@ class Repository
   index_name "frontend"
 
   attribute :identifier, Hash, mapping: { type: 'keyword' }
-  attribute :repositoryName, String, mapping: { type: 'text', fields: { keyword: { type: "keyword" }}}
+  attribute :repositoryName, String, mapping: { type: 'text', fields: { sortable: { type: "keyword" }}}
   attribute :repositoryUrl, String, mapping: { type: 'text' }
   attribute :repositoryContacts, String, mapping: { type: 'text' }
   attribute :description, String, mapping: { type: 'text' }

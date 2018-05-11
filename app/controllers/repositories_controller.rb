@@ -5,8 +5,8 @@ class RepositoriesController < ApplicationController
     from = (page - 1) * size
 
     sort = case params[:sort]
-           when "name" then { "repositoryName" => { order: 'asc' }}
-           when "-name" then { "repositoryName" => { order: 'desc' }}
+           when "name" then { "repositoryName.sortable" => { order: 'asc' }}
+           when "-name" then { "repositoryName.sortable" => { order: 'desc' }}
            when "created" then { created: { order: 'asc' }}
            when "-created" then { created: { order: 'desc' }}
            else { _score: { order: 'desc' } }
@@ -18,7 +18,7 @@ class RepositoriesController < ApplicationController
       response = Repository.find_by_ids(params[:ids], from: from, size: size, sort: sort)
     else
       params[:query] ||= "*"
-      response = Repository.query(params[:query], from: from, size: size, sort: sort, subjects: params[:subjects])
+      response = Repository.query(params[:query], from: from, size: size, sort: sort, subject: params[:subject])
     end
 
     total = response.total

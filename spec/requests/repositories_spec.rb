@@ -33,8 +33,8 @@ describe "Repositories", type: :request, vcr: true do
 
         expect(json['data'].size).to eq(25)
         response = json['data'].first
-        expect(response.dig('attributes', 'created')).to eq("2016-03-03T14:46:37Z")
-        expect(response.dig('attributes', 'repository-name')).to eq("West of Scotland Twenty-07 Study")
+        expect(response.dig('attributes', 'created')).to eq("2013-08-07T09:39:16Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("'Health Monitoring' Research Data Centre at the Robert Koch Institute")
         expect(last_response.status).to eq(200)
       end
     end
@@ -45,8 +45,8 @@ describe "Repositories", type: :request, vcr: true do
 
         expect(json['data'].size).to eq(25)
         response = json['data'].first
-        expect(response.dig('attributes', 'created')).to eq("2015-04-13T09:39:18Z")
-        expect(response.dig('attributes', 'repository-name')).to eq("NIST Atlas of the Spectrum of a Platinum/Hollow-Cathode Lamp in the region 1130-4330 Å")
+        expect(response.dig('attributes', 'created')).to eq("2015-04-07T09:39:18Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("ZVDD")
         expect(last_response.status).to eq(200)
       end
     end
@@ -57,8 +57,8 @@ describe "Repositories", type: :request, vcr: true do
 
         expect(json['data'].size).to eq(25)
         response = json['data'].first
-        expect(response.dig('attributes', 'created')).to eq("2016-03-03T14:46:37Z")
-        expect(response.dig('attributes', 'repository-name')).to eq("West of Scotland Twenty-07 Study")
+        expect(response.dig('attributes', 'created')).to eq("2014-03-31T09:39:16Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("UniProtKB/Swiss-Prot")
         expect(last_response.status).to eq(200)
       end
     end

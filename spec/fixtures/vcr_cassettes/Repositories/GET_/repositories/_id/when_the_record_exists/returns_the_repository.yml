@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 29 Apr 2018 19:00:35 GMT
+      - Fri, 11 May 2018 06:21:50 GMT
       Server:
       - Apache/2.4.18 (Ubuntu)
       Content-Type:
@@ -28,7 +28,7 @@ http_interactions:
       - '4048'
     body:
       encoding: ASCII-8BIT
-      string: '{"took":5,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":1,"max_score":1.0,"hits":[{"_index":"frontend","_type":"repository","_id":"585","_score":1.0,"_source":{"repositoryName":"UniProtKB/Swiss-Prot","repositoryNameLanguage":"eng","repositoryUrl":"http://web.expasy.org/docs/swiss-prot_guideline.html","description":"UniProtKB/Swiss-Prot
+      string: '{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":1,"max_score":1.0,"hits":[{"_index":"frontend","_type":"repository","_id":"585","_score":1.0,"_source":{"repositoryName":"UniProtKB/Swiss-Prot","repositoryNameLanguage":"eng","repositoryUrl":"http://web.expasy.org/docs/swiss-prot_guideline.html","description":"UniProtKB/Swiss-Prot
         is the manually annotated and reviewed section of the UniProt Knowledgebase
         (UniProtKB).\nIt is a high quality annotated and non-redundant protein sequence
         database, which brings together experimental results, computed features and
@@ -48,5 +48,5 @@ http_interactions:
         Curation Rules","url":"http://www.imexconsortium.org/curation"}],"databaseLicenses":[],"dataAccesses":[{"type":"open","restrictions":[]}],"dataLicenses":[{"name":"CC","url":"http://creativecommons.org/licenses/by-nd/3.0/"},{"name":"CC","url":"http://creativecommons.org/licenses/by/2.5/"}],"dataUploads":[{"type":"restricted","restrictions":[{"text":"registration"}]}],"dataUploadLicenses":[{"name":"IMEx
         data submission","url":"http://www.imexconsortium.org/submit-your-data"}],"software":[],"apis":[{"url":"ftp://ftp.expasy.org./databases/swiss-prot/","type":"FTP"}],"pidSystems":[{"text":"none"}],"aidSystems":[],"certificates":[],"metadataStandards":[],"syndications":[],"databaseAccess":{"type":"open","restrictions":[]},"identifier":{"re3data":100010677,"doi":"10.17616/R33314"}}}]}}'
     http_version: 
-  recorded_at: Sun, 29 Apr 2018 19:01:08 GMT
+  recorded_at: Fri, 11 May 2018 06:22:46 GMT
 recorded_with: VCR 3.0.3

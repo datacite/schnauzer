@@ -8,6 +8,10 @@ class RepositorySerializer < ActiveModel::Serializer
     object.identifier["re3data"]
   end
 
+  def subjects
+    object.subjects.sort_by { |subject| subject["text"] }
+  end
+
   def created
     object.created.strftime("%FT%TZ")
   end
