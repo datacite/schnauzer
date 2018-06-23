@@ -18,7 +18,15 @@ class RepositoriesController < ApplicationController
       response = Repository.find_by_ids(params[:ids], from: from, size: size, sort: sort)
     else
       params[:query] ||= "*"
-      response = Repository.query(params[:query], from: from, size: size, sort: sort, subject: params[:subject])
+      response = Repository.query(params[:query], 
+        from: from, 
+        size: size, 
+        sort: sort, 
+        subject: params[:subject], 
+        open: params[:open], 
+        certified: params[:certified],
+        pid: params[:pid],
+        disciplinary: params[:disciplinary])
     end
 
     total = response.total

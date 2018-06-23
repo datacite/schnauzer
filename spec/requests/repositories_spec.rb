@@ -4,6 +4,96 @@ describe "Repositories", type: :request, vcr: true do
   let(:headers) { {'ACCEPT'=>'application/vnd.api+json', 'CONTENT_TYPE'=>'application/vnd.api+json' } }
 
   describe 'GET /repositories' do
+    context 'filter by subject' do
+      it 'returns repositories' do
+        get '/repositories?subject=34', nil, headers: headers
+
+        expect(json['data'].size).to eq(25)
+        expect(json.dig('meta', 'total')).to eq(2053)
+
+        response = json['data'].first
+        expect(response.dig('attributes', 'created')).to eq("2016-11-10T15:51:32Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("Global Change Research Data Publishing and Repository")
+        expect(response.dig('attributes', 'subjects').size).to eq(6)
+        expect(response.dig('attributes', 'subjects').last).to eq("text"=>"34 Geosciences (including Geography)", "scheme"=>"DFG")
+        expect(last_response.status).to eq(200)
+      end
+    end
+
+    context 'filter by query' do
+      it 'returns repositories' do
+        get '/repositories?subject=34&query=climate', nil, headers: headers
+
+        expect(json['data'].size).to eq(25)
+        expect(json.dig('meta', 'total')).to eq(246)
+
+        response = json['data'].first
+        expect(response.dig('attributes', 'created')).to eq("2014-09-25T09:39:17Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("Environment Climate Data Sweden")
+        expect(last_response.status).to eq(200)
+      end
+    end
+
+    context 'filter open access' do
+      it 'returns repositories' do
+        get '/repositories?subject=34&query=climate&open=true', nil, headers: headers
+
+        expect(json['data'].size).to eq(25)
+        expect(json.dig('meta', 'total')).to eq(246)
+
+        response = json['data'].first
+        expect(response.dig('attributes', 'created')).to eq("2014-09-25T09:39:17Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("Environment Climate Data Sweden")
+        expect(response.dig('attributes', 'data-accesses').first).to eq("restrictions"=>[], "type"=>"open")
+        expect(last_response.status).to eq(200)
+      end
+    end
+
+    context 'filter certified' do
+      it 'returns repositories' do
+        get '/repositories?subject=34&query=climate&certified=true', nil, headers: headers
+
+        expect(json['data'].size).to eq(25)
+        expect(json.dig('meta', 'total')).to eq(246)
+
+        response = json['data'].first
+        expect(response.dig('attributes', 'created')).to eq("2014-09-25T09:39:17Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("Environment Climate Data Sweden")
+        expect(response.dig('attributes', 'certificates').first).to eq("text"=>"WDS")
+        expect(last_response.status).to eq(200)
+      end
+    end
+
+    context 'filter pid' do
+      it 'returns repositories' do
+        get '/repositories?subject=34&query=climate&pid=true', nil, headers: headers
+
+        expect(json['data'].size).to eq(25)
+        expect(json.dig('meta', 'total')).to eq(246)
+
+        response = json['data'].first
+        expect(response.dig('attributes', 'created')).to eq("2014-09-25T09:39:17Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("Environment Climate Data Sweden")
+        expect(response.dig('attributes', 'pid-systems').first).to eq("text"=>"DOI")
+        expect(last_response.status).to eq(200)
+      end
+    end
+
+    context 'filter disciplinary' do
+      it 'returns repositories' do
+        get '/repositories?subject=34&query=climate&disciplinary=true', nil, headers: headers
+
+        expect(json['data'].size).to eq(25)
+        expect(json.dig('meta', 'total')).to eq(246)
+
+        response = json['data'].first
+        expect(response.dig('attributes', 'created')).to eq("2014-09-25T09:39:17Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("Environment Climate Data Sweden")
+        expect(response.dig('attributes', 'pid-systems').first).to eq("text"=>"DOI")
+        expect(last_response.status).to eq(200)
+      end
+    end
+
     context 'sort by created' do
       it 'returns repositories' do
         get '/repositories?sort=created', nil, headers: headers

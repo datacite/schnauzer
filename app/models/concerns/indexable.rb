@@ -42,7 +42,15 @@ module Indexable
           weight: 10,
           filter: {
             regexp: {
-              "subjects.text" => "#{options[:subject]}.*"
+              "subjects.text" => options[:subject].present? ? "#{options[:subject]}" : ".*"
+            }
+          }
+        },
+        {
+          weight: 2,
+          filter: {
+            regexp: {
+              "types.text" => options[:disciplinary] == "true" ? "disciplinary" : ".*"
             }
           }
         },
@@ -50,15 +58,7 @@ module Indexable
           weight: 3,
           filter: {
             regexp: {
-              "types.text" => "disciplinary"
-            }
-          }
-        },
-        {
-          weight: 3,
-          filter: {
-            regexp: {
-              "dataAccesses.type" => "open"
+              "dataAccesses.type" => options[:open] == "true" ? "open" : ".*"
             }
           }
         },
@@ -82,15 +82,15 @@ module Indexable
           weight: 3,
           filter: {
             regexp: {
-              "certificates.text" => ".+"
+              "certificates.text" => options[:certified] == "true" ? ".+" : ".*"
             }
           }
         },
         {
-          weight: 0.0001,
+          weight: 3,
           filter: {
             regexp: {
-              "pidSystems.text" => "none"
+              "pidSystems.text" => options[:pid] == "true" ? ".+" : ".*"
             }
           }
         },
