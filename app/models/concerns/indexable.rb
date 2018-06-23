@@ -79,6 +79,14 @@ module Indexable
           }
         },
         {
+          weight: 10000,
+          filter: {
+            regexp: {
+              "providerTypes.text" => "dataProvider"
+            }
+          }
+        },
+        {
           weight: 3,
           filter: {
             regexp: {
