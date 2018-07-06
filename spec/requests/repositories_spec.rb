@@ -9,12 +9,12 @@ describe "Repositories", type: :request, vcr: true do
         get '/repositories?subject=34', nil, headers: headers
 
         expect(json['data'].size).to eq(25)
-        expect(json.dig('meta', 'total')).to eq(2053)
+        expect(json.dig('meta', 'total')).to eq(386)
 
         response = json['data'].first
-        expect(response.dig('attributes', 'created')).to eq("2016-11-10T15:51:32Z")
-        expect(response.dig('attributes', 'repository-name')).to eq("Global Change Research Data Publishing and Repository")
-        expect(response.dig('attributes', 'subjects').size).to eq(6)
+        expect(response.dig('attributes', 'created')).to eq("2013-06-10T09:39:16Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("Unidata's RAMADDA")
+        expect(response.dig('attributes', 'subjects').size).to eq(2)
         expect(response.dig('attributes', 'subjects').last).to eq("text"=>"34 Geosciences (including Geography)", "scheme"=>"DFG")
         expect(last_response.status).to eq(200)
       end
@@ -25,11 +25,11 @@ describe "Repositories", type: :request, vcr: true do
         get '/repositories?subject=34&query=climate', nil, headers: headers
 
         expect(json['data'].size).to eq(25)
-        expect(json.dig('meta', 'total')).to eq(246)
+        expect(json.dig('meta', 'total')).to eq(141)
 
         response = json['data'].first
-        expect(response.dig('attributes', 'created')).to eq("2014-09-25T09:39:17Z")
-        expect(response.dig('attributes', 'repository-name')).to eq("Environment Climate Data Sweden")
+        expect(response.dig('attributes', 'created')).to eq("2012-09-13T09:39:16Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("KNMI Climate Explorer")
         expect(last_response.status).to eq(200)
       end
     end
@@ -39,11 +39,11 @@ describe "Repositories", type: :request, vcr: true do
         get '/repositories?subject=34&query=climate&open=true', nil, headers: headers
 
         expect(json['data'].size).to eq(25)
-        expect(json.dig('meta', 'total')).to eq(246)
+        expect(json.dig('meta', 'total')).to eq(121)
 
         response = json['data'].first
-        expect(response.dig('attributes', 'created')).to eq("2014-09-25T09:39:17Z")
-        expect(response.dig('attributes', 'repository-name')).to eq("Environment Climate Data Sweden")
+        expect(response.dig('attributes', 'created')).to eq("2012-09-13T09:39:16Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("KNMI Climate Explorer")
         expect(response.dig('attributes', 'data-accesses').first).to eq("restrictions"=>[], "type"=>"open")
         expect(last_response.status).to eq(200)
       end
@@ -53,8 +53,8 @@ describe "Repositories", type: :request, vcr: true do
       it 'returns repositories' do
         get '/repositories?subject=34&query=climate&certified=true', nil, headers: headers
 
-        expect(json['data'].size).to eq(25)
-        expect(json.dig('meta', 'total')).to eq(246)
+        expect(json['data'].size).to eq(16)
+        expect(json.dig('meta', 'total')).to eq(16)
 
         response = json['data'].first
         expect(response.dig('attributes', 'created')).to eq("2014-09-25T09:39:17Z")
@@ -69,12 +69,12 @@ describe "Repositories", type: :request, vcr: true do
         get '/repositories?subject=34&query=climate&pid=true', nil, headers: headers
 
         expect(json['data'].size).to eq(25)
-        expect(json.dig('meta', 'total')).to eq(246)
+        expect(json.dig('meta', 'total')).to eq(136)
 
         response = json['data'].first
-        expect(response.dig('attributes', 'created')).to eq("2014-09-25T09:39:17Z")
-        expect(response.dig('attributes', 'repository-name')).to eq("Environment Climate Data Sweden")
-        expect(response.dig('attributes', 'pid-systems').first).to eq("text"=>"DOI")
+        expect(response.dig('attributes', 'created')).to eq("2012-09-13T09:39:16Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("KNMI Climate Explorer")
+        expect(response.dig('attributes', 'pid-systems').first).to eq("text"=>"none")
         expect(last_response.status).to eq(200)
       end
     end
@@ -84,12 +84,12 @@ describe "Repositories", type: :request, vcr: true do
         get '/repositories?subject=34&query=climate&disciplinary=true', nil, headers: headers
 
         expect(json['data'].size).to eq(25)
-        expect(json.dig('meta', 'total')).to eq(246)
+        expect(json.dig('meta', 'total')).to eq(132)
 
         response = json['data'].first
-        expect(response.dig('attributes', 'created')).to eq("2014-09-25T09:39:17Z")
-        expect(response.dig('attributes', 'repository-name')).to eq("Environment Climate Data Sweden")
-        expect(response.dig('attributes', 'pid-systems').first).to eq("text"=>"DOI")
+        expect(response.dig('attributes', 'created')).to eq("2012-09-13T09:39:16Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("KNMI Climate Explorer")
+        expect(response.dig('attributes', 'pid-systems').first).to eq("text"=>"none")
         expect(last_response.status).to eq(200)
       end
     end
@@ -147,8 +147,8 @@ describe "Repositories", type: :request, vcr: true do
 
         expect(json['data'].size).to eq(25)
         response = json['data'].first
-        expect(response.dig('attributes', 'created')).to eq("2014-03-31T09:39:16Z")
-        expect(response.dig('attributes', 'repository-name')).to eq("UniProtKB/Swiss-Prot")
+        expect(response.dig('attributes', 'created')).to eq("2014-05-12T09:39:17Z")
+        expect(response.dig('attributes', 'repository-name')).to eq("NCBI Genome")
         expect(last_response.status).to eq(200)
       end
     end

@@ -17,7 +17,6 @@ class RepositoriesController < ApplicationController
     elsif params[:ids].present?
       response = Repository.find_by_ids(params[:ids], from: from, size: size, sort: sort)
     else
-      params[:query] ||= "*"
       response = Repository.query(params[:query], 
         from: from, 
         size: size, 

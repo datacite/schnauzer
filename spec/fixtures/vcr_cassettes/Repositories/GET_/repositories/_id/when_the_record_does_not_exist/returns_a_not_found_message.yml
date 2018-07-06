@@ -2,24 +2,26 @@
 http_interactions:
 - request:
     method: get
-    uri: http://<ELASTIC_USER>:<ELASTIC_PASSWORD>@<ES_HOST>/frontend/repository/_search
+    uri: http://<ES_HOST>/frontend/repository/_search
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"query":{"match":{"identifier.re3data":"xxx"}}}'
     headers:
-      User-Agent:
-      - Faraday v0.15.0
       Authorization:
       - Basic YWd1OlJhbmRvbU51bWJlcklzNA==
-      Expect:
-      - ''
+      User-Agent:
+      - Faraday v0.15.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 400
       message: Bad Request
     headers:
       Date:
-      - Fri, 11 May 2018 06:21:50 GMT
+      - Fri, 06 Jul 2018 13:52:37 GMT
       Server:
       - Apache/2.4.18 (Ubuntu)
       Content-Type:
@@ -29,7 +31,7 @@ http_interactions:
       Connection:
       - close
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"error":"SearchPhaseExecutionException[Failed to execute phase [query],
         all shards failed; shardFailures {[k3bsmF8ETPK4XVBUaRDQPA][frontend][0]: SearchParseException[[frontend][0]:
         from[-1],size[-1]: Parse Failure [Failed to parse source [{\"query\":{\"match\":{\"identifier.re3data\":\"xxx\"}}}]]];
@@ -47,5 +49,5 @@ http_interactions:
         to parse source [{\"query\":{\"match\":{\"identifier.re3data\":\"xxx\"}}}]]];
         nested: NumberFormatException[For input string: \"xxx\"]; }]","status":400}'
     http_version: 
-  recorded_at: Fri, 11 May 2018 06:22:46 GMT
+  recorded_at: Fri, 06 Jul 2018 13:53:01 GMT
 recorded_with: VCR 3.0.3

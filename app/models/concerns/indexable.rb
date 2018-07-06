@@ -12,20 +12,23 @@ module Indexable
     end
 
     def query(query, options={})
+      must = [
+        { terms: { "dataUploads.type" => ["open", "restricted"] }}
+      ]
+      must << { term: { "subjects.text" => options[:subject] }} if options[:subject].present?
+      must << { term: { "dataAccesses.type" => "open" }} if options[:open] == "true"
+      must << { term: { "types.text" => "disciplinary" }} if options[:disciplinary] == "true"
+      must << { regexp: { "certificates.text" => ".+" }} if options[:certified] == "true"
+      must << { regexp: { "pidSystems.text" => ".+" }} if options[:pid] == "true"
+      must << { multi_match: { query: query, fields: query_fields }} if query.present?
+      
       __elasticsearch__.search({
         from: options[:from],
         size: options[:size],
         sort: [options[:sort]],
         query: {
-          function_score: {
-            query: {
-              multi_match: {
-                query: query,
-                fields: query_fields,
-                zero_terms_query: "all"
-              }
-            },
-            functions: query_functions(options)
+          bool: {
+            must: must
           }
         },
         explain: true
@@ -34,83 +37,6 @@ module Indexable
 
     def query_fields
       ['repositoryName^5', 'description^5', 'keywords.text^5', 'subjects.text^5', '_all']
-    end
-
-    def query_functions(options = {})
-      [
-        {
-          weight: 10,
-          filter: {
-            regexp: {
-              "subjects.text" => options[:subject].present? ? "#{options[:subject]}" : ".*"
-            }
-          }
-        },
-        {
-          weight: 2,
-          filter: {
-            regexp: {
-              "types.text" => options[:disciplinary] == "true" ? "disciplinary" : ".*"
-            }
-          }
-        },
-        {
-          weight: 3,
-          filter: {
-            regexp: {
-              "dataAccesses.type" => options[:open] == "true" ? "open" : ".*"
-            }
-          }
-        },
-        {
-          weight: 3,
-          filter: {
-            regexp: {
-              "dataUploads.text" => "open"
-            }
-          }
-        },
-        {
-          weight: 0.0001,
-          filter: {
-            regexp: {
-              "dataUploads.text" => "closed"
-            }
-          }
-        },
-        {
-          weight: 10000,
-          filter: {
-            regexp: {
-              "providerTypes.text" => "dataProvider"
-            }
-          }
-        },
-        {
-          weight: 3,
-          filter: {
-            regexp: {
-              "certificates.text" => options[:certified] == "true" ? ".+" : ".*"
-            }
-          }
-        },
-        {
-          weight: 3,
-          filter: {
-            regexp: {
-              "pidSystems.text" => options[:pid] == "true" ? ".+" : ".*"
-            }
-          }
-        },
-        {
-          weight: 0.0001,
-          filter: {
-            regexp: {
-              "endDate" => ".+"
-            }
-          }
-        }
-      ]
     end
   end
 end
