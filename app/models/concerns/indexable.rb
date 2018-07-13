@@ -19,7 +19,7 @@ module Indexable
       must << { term: { "dataAccesses.type" => "open" }} if options[:open] == "true"
       must << { term: { "types.text" => "disciplinary" }} if options[:disciplinary] == "true"
       must << { regexp: { "certificates.text" => ".+" }} if options[:certified] == "true"
-      must << { regexp: { "pidSystems.text" => ".+" }} if options[:pid] == "true"
+      must << { regexp: { "pidSystems.text" => "doi|hdl|urn|ark" }} if options[:pid] == "true"
       must << { multi_match: { query: query, fields: query_fields }} if query.present?
       
       __elasticsearch__.search({
