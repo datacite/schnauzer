@@ -21,6 +21,9 @@ module Indexable
       must << { regexp: { "certificates.text" => ".+" }} if options[:certified] == "true"
       must << { regexp: { "pidSystems.text" => "doi|hdl|urn|ark" }} if options[:pid] == "true"
       must << { multi_match: { query: query, fields: query_fields }} if query.present?
+
+      should = []
+      should << [{ term: { "subjects.text" => options[:tag] }}, { term: { "keywords.text" => options[:tag] }}] if options[:tag].present?
       
       __elasticsearch__.search({
         from: options[:from],
@@ -28,7 +31,8 @@ module Indexable
         sort: [options[:sort]],
         query: {
           bool: {
-            must: must
+            must: must,
+            should: should
           }
         },
         explain: true

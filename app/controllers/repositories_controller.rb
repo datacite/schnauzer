@@ -22,6 +22,7 @@ class RepositoriesController < ApplicationController
         size: size, 
         sort: sort, 
         subject: params[:subject], 
+        tag: params[:tag], 
         open: params[:open], 
         certified: params[:certified],
         pid: params[:pid],
