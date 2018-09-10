@@ -21,7 +21,7 @@ module Indexable
             phrase_prefix: {
               phrase: {
                 field: "description",
-                size: 3,
+                size: 4,
                 direct_generator: [
                   {
                     field: "description",
