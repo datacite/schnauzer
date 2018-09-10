@@ -21,8 +21,7 @@ class RepositoriesController < ApplicationController
         from: from, 
         size: size, 
         sort: sort, 
-        subject: params[:subject], 
-        tag: params[:tag], 
+        subject: params[:subject],
         open: params[:open], 
         certified: params[:certified],
         pid: params[:pid],
@@ -48,5 +47,11 @@ class RepositoriesController < ApplicationController
     fail Elasticsearch::Transport::Transport::Errors::NotFound unless @repository.present?
 
     render jsonapi: @repository
+  end
+
+  def suggest
+    response = Repository.suggest(params[:query])
+
+    render json: response.dig("suggest", "phrase_prefix", 0, "options").map { |s| s["highlighted"] }.to_json
   end
 end
