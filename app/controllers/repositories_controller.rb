@@ -52,6 +52,6 @@ class RepositoriesController < ApplicationController
   def suggest
     response = Repository.suggest(params[:query])
 
-    render json: response.dig("suggest", "phrase_prefix", 0, "options").map { |s| s["highlighted"] }.to_json
+    render json: response.dig("suggest", "phrase_prefix", 0, "options").map { |s| s["text"] }.to_json
   end
 end

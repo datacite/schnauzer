@@ -206,8 +206,7 @@ describe "Repositories", type: :request, vcr: true do
     it 'returns terms' do
       get '/repositories/suggest?query=clim', nil, headers: headers
 
-      puts last_response.body
-      expect(json).to eq(["<em>chip</em>", "<em>coli</em>", "<em>csir</em>"])
+      expect(json).to eq(["chip", "coli", "csir"])
       expect(last_response.status).to eq(200)
     end
   end
