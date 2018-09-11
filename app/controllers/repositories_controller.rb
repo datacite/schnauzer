@@ -5,11 +5,12 @@ class RepositoriesController < ApplicationController
     from = (page - 1) * size
 
     sort = case params[:sort]
+           when "relevance" then { _score: { order: 'desc' }}
            when "name" then { "repositoryName.sortable" => { order: 'asc' }}
            when "-name" then { "repositoryName.sortable" => { order: 'desc' }}
            when "created" then { created: { order: 'asc' }}
            when "-created" then { created: { order: 'desc' }}
-           else { _score: { order: 'desc' } }
+           else { "repositoryName.sortable" => { order: 'asc' }}
            end
 
     if params[:id].present?
