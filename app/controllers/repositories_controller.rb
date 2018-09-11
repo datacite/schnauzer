@@ -31,7 +31,7 @@ class RepositoriesController < ApplicationController
     total = response.total
     total_pages = (total.to_f / size).ceil
 
-    @repositories = response.results.results
+    @repositories = Kaminari.paginate_array(response.results, total_count: total).page(page).per(size)
 
     meta = {
       total: total,
