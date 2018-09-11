@@ -70,6 +70,8 @@ module Indexable
         },
         explain: true
       })
+    rescue Faraday::ConnectionFailed
+      OpenStruct.new(total: 0, results: nil)
     end
 
     def query_fields

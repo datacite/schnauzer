@@ -31,7 +31,7 @@ class RepositoriesController < ApplicationController
     total = response.total
     total_pages = (total.to_f / size).ceil
 
-    @repositories = Kaminari.paginate_array(response.results, total_count: total).page(page).per(size)
+    @repositories = response.results.results
 
     meta = {
       total: total,
@@ -40,6 +40,8 @@ class RepositoriesController < ApplicationController
     }.compact
 
     render jsonapi: @repositories, meta: meta
+  rescue Elasticsearch::Transport::Transport::Errors::LengthRequired
+    render json: []
   end
 
   def show
@@ -53,5 +55,11 @@ class RepositoriesController < ApplicationController
     response = Repository.suggest(params[:query])
 
     render json: response.dig("suggest", "phrase_prefix", 0, "options").map { |s| s["text"] }.to_json
+  end
+
+  def badge
+    id = "http://www.re3data.org/public/badges/s/light/" + params[:id][3..-1]
+    result = Maremma.get(id, accept: "image/svg+xml", raw: true)
+    render body: result.body.fetch("data", nil), content_type: "image/svg+xml"
   end
 end
