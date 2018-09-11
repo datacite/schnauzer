@@ -59,7 +59,7 @@ class RepositoriesController < ApplicationController
   end
 
   def badge
-    id = "http://www.re3data.org/public/badges/s/light/" + params[:id][3..-1]
+    id = "http://www.re3data.org/public/badges/s/light/" + params[:id]
     result = Maremma.get(id, accept: "image/svg+xml", raw: true)
     render body: result.body.fetch("data", nil), content_type: "image/svg+xml"
   end
