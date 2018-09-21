@@ -49,6 +49,8 @@ module Indexable
     end
 
     def query(query, options={})
+      query = query[3..-1] if query.present? && query.starts_with?("r3d")
+
       must = [
         { terms: { "dataUploads.type" => ["open", "restricted"] }}
       ]
