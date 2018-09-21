@@ -6,7 +6,8 @@ module Indexable
     def find_by_id(id, options={})
       return nil unless id.present?
 
-      __elasticsearch__.search(query: { match: { "identifier.re3data" => id } })
+      __elasticsearch__.search(query: { match: { "identifier.re3data" => id[3..-1] } })
+
     rescue Elasticsearch::Transport::Transport::Errors::NotFound, Elasticsearch::Transport::Transport::Errors::BadRequest, Elasticsearch::Persistence::Repository::DocumentNotFound
       fail Elasticsearch::Transport::Transport::Errors::NotFound
     end

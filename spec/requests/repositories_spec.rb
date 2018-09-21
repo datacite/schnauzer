@@ -187,7 +187,7 @@ describe "Repositories", type: :request, vcr: true do
         get "/repositories/100010677", nil, headers
 
         expect(last_response.status).to eq(200)
-        expect(json.dig('data', 'id')).to eq("100010677")
+        expect(json.dig('data', 'id')).to eq("r3d100010677")
         expect(json.dig('data', 'attributes', 'repository-name')).to eq("UniProtKB/Swiss-Prot")
       end
     end

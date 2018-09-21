@@ -5,7 +5,7 @@ class RepositorySerializer < ActiveModel::Serializer
     :apis, :pidSystems, :startDate, :endDate, :created, :updated
 
   def id
-    object.identifier["re3data"]
+    "r3d#{object.identifier["re3data"]}"
   end
 
   def subjects
