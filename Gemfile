@@ -13,6 +13,7 @@ gem 'elasticsearch', '~> 1.1', '>= 1.1.3'
 gem 'elasticsearch-model', '~> 0.1.9', require: 'elasticsearch/model'
 gem 'elasticsearch-persistence', '~> 0.1.9', require: 'elasticsearch/persistence/model'
 gem 'elasticsearch-rails', '~> 0.1.9'
+gem 'maremma', '>= 4.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors', '~> 1.0', '>= 1.0.2', :require => 'rack/cors'
 
