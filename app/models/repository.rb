@@ -18,20 +18,21 @@ class Repository
   attribute :created, DateTime, mapping: { type: :date }
   attribute :updated, DateTime, mapping: { type: :date }
 
-  attribute :types, Array, default: [], mapping: { type: 'text' }
-  attribute :additionalNames, Array, default: [], mapping: { type: 'text' }
-  attribute :subjects, Array, default: [], mapping: { type: 'text' }
-  attribute :contentTypes, Array, default: [], mapping: { type: 'text' }
-  attribute :certificates, Array, default: [], mapping: { type: 'text' }
-  attribute :providerTypes, Array, default: [], mapping: { type: 'text' }
-  attribute :keywords, Array, default: [], mapping: { type: 'text' }
-  attribute :institutions, Array, default: [], mapping: { type: 'text' }
-  attribute :dataAccesses, Array, default: [], mapping: { type: 'text' }
-  attribute :dataUploads, Array, default: [], mapping: { type: 'text' }
-  attribute :dataUploadLicenses, Array, default: [], mapping: { type: 'text' }
-  attribute :pidSystems, Array, default: [], mapping: { type: 'text' }
-  attribute :apis, Array, default: [], mapping: { type: 'text' }
-  attribute :pidSystems, Array, default: [], mapping: { type: 'text' }
+  attribute :types, String, mapping: { type: 'text' }
+  attribute :additionalNames, String, mapping: { type: 'text' }
+  attribute :subjects, String, mapping: { type: 'text' }
+  attribute :contentTypes, String, mapping: { type: 'text' }
+  attribute :certificates, String, mapping: { type: 'text' }
+  attribute :providerTypes, String, mapping: { type: 'text' }
+  attribute :keywords, String, mapping: { type: 'text' }
+  attribute :institutions, String, mapping: { type: 'text' }
+  attribute :dataAccesses, String, mapping: { type: 'text' }
+  attribute :dataUploads, String, mapping: { type: 'text' }
+  attribute :dataUploadLicenses, String, mapping: { type: 'text' }
+  attribute :pidSystems, String, mapping: { type: 'text' }
+  attribute :apis, String, mapping: { type: 'text' }
+  attribute :pidSystems, String, mapping: { type: 'text' }
+  attribute :software, String, mapping: { type: 'text' }
 
   def self.query_aggregations
     {

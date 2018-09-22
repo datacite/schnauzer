@@ -56,6 +56,7 @@ module Indexable
       ]
       must << { multi_match: { query: query, fields: query_fields, type: "phrase_prefix", max_expansions: 50 }} if query.present?
       must << { term: { "subjects.text" => options[:subject] }} if options[:subject].present?
+      must << { term: { "software.name" => options[:software] }} if options[:software].present?
       must << { term: { "dataAccesses.type" => "open" }} if options[:open] == "true"
       must << { term: { "types.text" => "disciplinary" }} if options[:disciplinary] == "true"
       must << { regexp: { "certificates.text" => ".+" }} if options[:certified] == "true"

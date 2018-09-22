@@ -26,6 +26,7 @@ class RepositoriesController < ApplicationController
         open: params[:open], 
         certified: params[:certified],
         pid: params[:pid],
+        software: params[:software],
         disciplinary: params[:disciplinary])
     end
 
