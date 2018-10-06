@@ -31,7 +31,6 @@ class Repository
   attribute :dataUploadLicenses, String, mapping: { type: 'text' }
   attribute :pidSystems, String, mapping: { type: 'text' }
   attribute :apis, String, mapping: { type: 'text' }
-  attribute :pidSystems, String, mapping: { type: 'text' }
   attribute :software, String, mapping: { type: 'text' }
 
   def self.query_aggregations
