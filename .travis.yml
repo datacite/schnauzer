@@ -54,7 +54,7 @@ after_success:
       ./dockerize -template vendor/docker/_schnauzer.auto.tfvars.tmpl:mastino/stage/services/re3data/_schnauzer.auto.tfvars;
       
       if [ "${TRAVIS_TAG?}" ]; then
-        ./dockerize -template vendor/docker/_spinone.auto.tfvars.tmpl:mastino/prod-eu-west/services/re3data/_schnauzer.auto.tfvars;
+        ./dockerize -template vendor/docker/_schnauzer.auto.tfvars.tmpl:mastino/prod-eu-west/services/re3data/_schnauzer.auto.tfvars;
       fi
 
       cd mastino;
