@@ -1,9 +1,5 @@
 class RepositoriesController < ApplicationController
   def index
-    page = (params.dig(:page, :number) || 1).to_i
-    size = (params.dig(:page, :size) || 25).to_i
-    from = (page - 1) * size
-
     sort = case params[:sort]
            when "relevance" then { _score: { order: 'desc' }}
            when "name" then { "repositoryName.sortable" => { order: 'asc' }}
@@ -13,14 +9,23 @@ class RepositoriesController < ApplicationController
            else { "repositoryName.sortable" => { order: 'asc' }}
            end
 
+    page = params[:page] || {}
+    if page[:size].present? 
+      page[:size] = [page[:size].to_i, 1000].min
+      max_number = page[:size] > 0 ? 10000/page[:size] : 1
+    else
+      page[:size] = 25
+      max_number = 10000/page[:size]
+    end
+    page[:number] = page[:number].to_i > 0 ? [page[:number].to_i, max_number].min : 1
+
     if params[:id].present?
       response = Repository.find_by_id(params[:id])
     elsif params[:ids].present?
-      response = Repository.find_by_ids(params[:ids], from: from, size: size, sort: sort)
+      response = Repository.find_by_ids(params[:ids], page: page, sort: sort)
     else
       response = Repository.query(params[:query], 
-        from: from, 
-        size: size, 
+        page: page, 
         sort: sort, 
         subject: params[:subject],
         open: params[:open], 
@@ -31,17 +36,28 @@ class RepositoriesController < ApplicationController
     end
 
     total = response.total
-    total_pages = (total.to_f / size).ceil
+    total_pages = page[:size] > 0 ? (total.to_f / page[:size]).ceil : 0
 
-    @repositories = Kaminari.paginate_array(response.results, total_count: total).page(page).per(size)
+    @repositories = response.results
 
-    meta = {
+    options = {}
+    options[:meta] = {
       total: total,
-      total_pages: total_pages,
-      page: page
+      "totalPages" => total_pages,
+      page: page[:number]
     }.compact
 
-    render jsonapi: @repositories, meta: meta
+    options[:links] = {
+      self: request.original_url,
+      next: @repositories.blank? ? nil : request.base_url + "/repositories?" + {
+        query: params[:query],
+        "page[number]" => page[:number] + 1,
+        "page[size]" => page[:size],
+        sort: params[:sort] }.compact.to_query
+      }.compact
+    options[:is_collection] = true
+
+    render json: RepositorySerializer.new(@repositories, options).serialized_json, status: :ok
   rescue Elasticsearch::Transport::Transport::Errors::LengthRequired
     render json: []
   end
@@ -50,7 +66,10 @@ class RepositoriesController < ApplicationController
     @repository = Repository.find_by_id(params[:id]).first
     fail Elasticsearch::Transport::Transport::Errors::NotFound unless @repository.present?
 
-    render jsonapi: @repository
+    options = {}
+    options[:is_collection] = false
+
+    render json: RepositorySerializer.new(@repository, options).serialized_json, status: :ok
   end
 
   def suggest

@@ -1,22 +1,26 @@
-class RepositorySerializer < ActiveModel::Serializer
-  attributes :repositoryName, :repositoryUrl, :repositoryContacts, :description, :certificates, :types, 
+class RepositorySerializer
+  include FastJsonapi::ObjectSerializer
+  set_key_transform :camel_lower
+  set_type :repositories
+
+  attributes :re3data_id, :repositoryName, :repositoryUrl, :repositoryContacts, :description, :certificates, :types, 
     :additionalNames, :subjects, :contentTypes, :providerTypes, 
     :keywords, :institutions, :dataAccesses, :dataUploads, :dataUploadLicenses, :pidSystems,
     :apis, :pidSystems, :software, :startDate, :endDate, :created, :updated
 
-  def id
+  attribute :re3data_id do |object|
     "r3d#{object.identifier["re3data"]}"
   end
 
-  def subjects
+  attribute :subjects do |object|
     object.subjects.sort_by { |subject| subject["text"] }
   end
 
-  def created
+  attribute :created do |object|
     object.created.strftime("%FT%TZ")
   end
 
-  def updated
+  attribute :updated do |object|
     object.updated.strftime("%FT%TZ")
   end
 end

@@ -8,6 +8,7 @@ gem 'lograge', '~> 0.5'
 gem 'bugsnag', '~> 5.3'
 gem 'librato-rails', '~> 1.4.2'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'fast_jsonapi', '~> 1.3'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
 gem 'elasticsearch', '~> 1.1', '>= 1.1.3'
 gem 'elasticsearch-model', '~> 0.1.9', require: 'elasticsearch/model'
@@ -26,9 +27,9 @@ end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-commands-rspec'
   # gem 'httplog', '~> 1.0'
 end
 

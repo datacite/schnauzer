@@ -6,7 +6,7 @@ module Indexable
     def find_by_id(id, options={})
       return nil unless id.present?
 
-      __elasticsearch__.search(query: { match: { "identifier.re3data" => id[3..-1] } })
+      __elasticsearch__.search(query: { match: { "identifier.doi" => id } })
 
     rescue Elasticsearch::Transport::Transport::Errors::NotFound, Elasticsearch::Transport::Transport::Errors::BadRequest, Elasticsearch::Persistence::Repository::DocumentNotFound
       fail Elasticsearch::Transport::Transport::Errors::NotFound
@@ -50,6 +50,8 @@ module Indexable
 
     def query(query, options={})
       query = query[3..-1] if query.present? && query.starts_with?("r3d")
+      from = (options.dig(:page, :number) - 1) * options.dig(:page, :size)
+      sort = options[:sort]
 
       must = [
         { terms: { "dataUploads.type" => ["open", "restricted"] }}
@@ -63,9 +65,9 @@ module Indexable
       must << { regexp: { "pidSystems.text" => "doi|hdl|urn|ark" }} if options[:pid] == "true"
       
       __elasticsearch__.search({
-        from: options[:from],
-        size: options[:size],
-        sort: [options[:sort]],
+        size: options.dig(:page, :size),
+        from: from,
+        sort: sort,
         query: {
           bool: {
             must: must

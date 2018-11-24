@@ -5,49 +5,32 @@ http_interactions:
     uri: http://<ES_HOST>/frontend/repository/_search
     body:
       encoding: UTF-8
-      string: '{"query":{"match":{"identifier.re3data":"xxx"}}}'
+      string: '{"query":{"match":{"identifier.doi":"xxx"}}}'
     headers:
       Authorization:
       - Basic YWd1OlJhbmRvbU51bWJlcklzNA==
       User-Agent:
-      - Faraday v0.15.2
+      - Faraday v0.15.3
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
     headers:
       Date:
-      - Fri, 06 Jul 2018 13:52:37 GMT
+      - Sat, 24 Nov 2018 07:23:15 GMT
       Server:
       - Apache/2.4.18 (Ubuntu)
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '1392'
-      Connection:
-      - close
+      - '123'
     body:
       encoding: UTF-8
-      string: '{"error":"SearchPhaseExecutionException[Failed to execute phase [query],
-        all shards failed; shardFailures {[k3bsmF8ETPK4XVBUaRDQPA][frontend][0]: SearchParseException[[frontend][0]:
-        from[-1],size[-1]: Parse Failure [Failed to parse source [{\"query\":{\"match\":{\"identifier.re3data\":\"xxx\"}}}]]];
-        nested: NumberFormatException[For input string: \"xxx\"]; }{[k3bsmF8ETPK4XVBUaRDQPA][frontend][1]:
-        SearchParseException[[frontend][1]: from[-1],size[-1]: Parse Failure [Failed
-        to parse source [{\"query\":{\"match\":{\"identifier.re3data\":\"xxx\"}}}]]];
-        nested: NumberFormatException[For input string: \"xxx\"]; }{[k3bsmF8ETPK4XVBUaRDQPA][frontend][2]:
-        SearchParseException[[frontend][2]: from[-1],size[-1]: Parse Failure [Failed
-        to parse source [{\"query\":{\"match\":{\"identifier.re3data\":\"xxx\"}}}]]];
-        nested: NumberFormatException[For input string: \"xxx\"]; }{[k3bsmF8ETPK4XVBUaRDQPA][frontend][3]:
-        SearchParseException[[frontend][3]: from[-1],size[-1]: Parse Failure [Failed
-        to parse source [{\"query\":{\"match\":{\"identifier.re3data\":\"xxx\"}}}]]];
-        nested: NumberFormatException[For input string: \"xxx\"]; }{[k3bsmF8ETPK4XVBUaRDQPA][frontend][4]:
-        SearchParseException[[frontend][4]: from[-1],size[-1]: Parse Failure [Failed
-        to parse source [{\"query\":{\"match\":{\"identifier.re3data\":\"xxx\"}}}]]];
-        nested: NumberFormatException[For input string: \"xxx\"]; }]","status":400}'
+      string: '{"took":41,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":0,"max_score":null,"hits":[]}}'
     http_version: 
-  recorded_at: Fri, 06 Jul 2018 13:53:01 GMT
+  recorded_at: Sat, 24 Nov 2018 07:23:15 GMT
 recorded_with: VCR 3.0.3

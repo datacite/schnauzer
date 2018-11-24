@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :index, only: [:index]
   resources :heartbeat, only: [:index]
 
-  resources :repositories
+  resources :repositories, constraints: { :id => /.+/ }
 end
