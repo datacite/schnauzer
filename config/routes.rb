@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root :to => 'index#index'
 
   get 'repositories/suggest', to: 'repositories#suggest'
-  get "/repositories/:id/badge", to: "repositories#badge", format: :svg
+  get "/repositories/:id/badge", to: "repositories#badge", format: :svg, constraints: { :id => /.+/ }
 
   resources :index, only: [:index]
   resources :heartbeat, only: [:index]

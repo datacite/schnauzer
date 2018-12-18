@@ -1,4 +1,6 @@
 class RepositoriesController < ApplicationController
+  before_action :set_repository, only: [:show, :badge]
+
   def index
     sort = case params[:sort]
            when "relevance" then { _score: { order: 'desc' }}
@@ -63,9 +65,6 @@ class RepositoriesController < ApplicationController
   end
 
   def show
-    @repository = Repository.find_by_id(params[:id]).first
-    fail Elasticsearch::Transport::Transport::Errors::NotFound unless @repository.present?
-
     options = {}
     options[:is_collection] = false
 
@@ -79,10 +78,16 @@ class RepositoriesController < ApplicationController
   end
 
   def badge
-    fail Elasticsearch::Transport::Transport::Errors::NotFound unless params[:id].present?
+    url= "http://www.re3data.org/public/badges/s/light/#{@repository.identifier["re3data"]}"
+    result = Maremma.get(url, accept: "image/svg+xml", raw: true)
 
-    id = "http://www.re3data.org/public/badges/s/light/#{params[:id][3..-1]}"
-    result = Maremma.get(id, accept: "image/svg+xml", raw: true)
     render body: result.body.fetch("data", nil), content_type: "image/svg+xml"
+  end
+
+  protected
+
+  def set_repository
+    @repository = Repository.find_by_id(params[:id]).first
+    fail Elasticsearch::Transport::Transport::Errors::NotFound unless @repository.present?
   end
 end
