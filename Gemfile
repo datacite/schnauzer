@@ -5,8 +5,7 @@ gem 'rails', '~> 5.2.0'
 gem 'dotenv'
 gem "dalli", "~> 2.7.6"
 gem 'lograge', '~> 0.5'
-gem 'bugsnag', '~> 5.3'
-gem 'librato-rails', '~> 1.4.2'
+gem 'sentry-raven', '~> 2.9'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'fast_jsonapi', '~> 1.3'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
@@ -17,6 +16,7 @@ gem 'elasticsearch-rails', '~> 0.1.9'
 gem 'maremma', '>= 4.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors', '~> 1.0', '>= 1.0.2', :require => 'rack/cors'
+gem 'git', '~> 1.5'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'

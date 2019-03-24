@@ -14,6 +14,8 @@ addons:
 
 install:
   - travis_retry bundle install
+  - curl -sL https://sentry.io/get-cli/ | bash
+  - sentry-cli --version
 
 before_script:
   - memcached -p 11211 &
@@ -49,9 +51,16 @@ after_success:
       git clone "https://${TRAVIS_SECURE_TOKEN}@github.com/datacite/mastino.git";
       ./dockerize -template vendor/docker/_schnauzer.auto.tfvars.tmpl:mastino/stage/services/re3data/_schnauzer.auto.tfvars;
       
+      sentry-cli releases new schnauzer:${GIT_TAG} --finalize --project schnauzer;
+
       if [ "${TRAVIS_TAG?}" ]; then
         ./dockerize -template vendor/docker/_schnauzer.auto.tfvars.tmpl:mastino/prod-eu-west/services/re3data/_schnauzer.auto.tfvars;
+        sentry-cli releases deploys schnauzer:${GIT_TAG} new -e production;
+      else
+        sentry-cli releases deploys schnauzer:${GIT_TAG} new -e stage;
       fi
+
+      sentry-cli releases set-commits --auto schnauzer:${GIT_TAG};
 
       cd mastino;
       git remote;
