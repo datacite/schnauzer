@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://<ES_HOST>/frontend/_search?search_type=count
+    body:
+      encoding: UTF-8
+      string: '{"suggest":{"text":"clim","phrase_prefix":{"phrase":{"field":"description","size":4,"direct_generator":[{"field":"description","suggest_mode":"always"},{"field":"subjects.text","suggest_mode":"always"},{"field":"keywords.text","suggest_mode":"always"}],"highlight":{"pre_tag":"\u003cem\u003e","post_tag":"\u003c/em\u003e"}}}}}'
+    headers:
+      Authorization:
+      - Basic YWd1OlJhbmRvbU51bWJlcklzNA==
+      User-Agent:
+      - Faraday v0.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 01 Aug 2019 11:11:53 GMT
+      Server:
+      - Apache/2.4.18 (Ubuntu)
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '473'
+    body:
+      encoding: UTF-8
+      string: '{"took":5,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":2369,"max_score":0.0,"hits":[]},"suggest":{"phrase_prefix":[{"text":"clim","offset":0,"length":4,"options":[{"text":"chip","highlighted":"<em>chip</em>","score":0.01880624},{"text":"coli","highlighted":"<em>coli</em>","score":0.014304235},{"text":"claims","highlighted":"<em>claims</em>","score":0.012526189},{"text":"claim","highlighted":"<em>claim</em>","score":0.012503426}]}]}}'
+    http_version: 
+  recorded_at: Thu, 01 Aug 2019 11:11:53 GMT
+recorded_with: VCR 3.0.3

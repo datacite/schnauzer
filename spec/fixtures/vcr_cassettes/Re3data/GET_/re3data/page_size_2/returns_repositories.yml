@@ -1,0 +1,103 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://<ES_HOST>/frontend/repository/_search
+    body:
+      encoding: UTF-8
+      string: '{"size":2,"from":0,"sort":{"repositoryName.sortable":{"order":"asc"}},"query":{"bool":{"must":[{"terms":{"dataUploads.type":["open","restricted"]}}]}},"explain":true}'
+    headers:
+      Authorization:
+      - Basic YWd1OlJhbmRvbU51bWJlcklzNA==
+      User-Agent:
+      - Faraday v0.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 01 Aug 2019 11:11:51 GMT
+      Server:
+      - Apache/2.4.18 (Ubuntu)
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '11702'
+    body:
+      encoding: UTF-8
+      string: '{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":1581,"max_score":null,"hits":[{"_shard":1,"_node":"lFVkrbpVQmu9Q7GLIutDSQ","_index":"frontend","_type":"repository","_id":"1268","_score":null,"_source":{"repositoryName":"1000
+        Functional Connectomes Project","repositoryNameLanguage":"eng","repositoryUrl":"http://fcon_1000.projects.nitrc.org/fcpClassic/FcpTable.html","description":"The
+        FCP entailed the aggregation and public release (via www.nitrc.org) of over
+        1200 resting state fMRI (R-fMRI) datasets collected from 33 sites around the
+        world.","descriptionLanguage":"eng","size":null,"sizeUpdated":null,"startDate":null,"endDate":null,"missionStatementUrl":"http://fcon_1000.projects.nitrc.org/","versioning":"yes","citationGuidelineUrl":null,"enhancedPublication":"yes","qualityManagement":"no","remarks":"Disclaimer:
+        http://fcon_1000.projects.nitrc.org/","created":"2015-02-19T09:39:18+01:00","updated":"2018-11-29T15:11:57+01:00","repositoryLanguages":[{"text":"eng"}],"types":[{"text":"disciplinary"}],"additionalNames":[],"repositoryIdentifiers":[{"text":"RRID:nlx_144428"},{"text":"RRID:SCR_005361"},{"text":"OMICS_13923"}],"repositoryContacts":[{"text":"moderator@nitrc.org"}],"subjects":[{"scheme":"DFG","text":"20606
+        Cognitive Neuroscience and Neuroimaging"},{"scheme":"DFG","text":"20604 Systemic
+        Neuroscience, Computational Neuroscience, Behaviour"},{"scheme":"DFG","text":"206
+        Neurosciences"},{"scheme":"DFG","text":"22 Medicine"},{"scheme":"DFG","text":"2
+        Life Sciences"}],"contentTypes":[{"scheme":"parse","text":"Archived data"},{"scheme":"parse","text":"Structured
+        text"},{"scheme":"parse","text":"Scientific and statistical data formats"},{"scheme":"parse","text":"Raw
+        data"},{"scheme":"parse","text":"Software applications"}],"providerTypes":[{"text":"dataProvider"}],"keywords":[{"text":"mental
+        health"}],"institutions":[{"country":"USA","responsibilityStartDate":null,"identifiers":[],"name":"Neuroimaging
+        Informatics Tools and Resources Clearinghouse","responsibilityTypes":[{"text":"general"},{"text":"technical"}],"type":"commercial","nameLanguage":"eng","responsibilityEndDate":null,"url":"https://www.nitrc.org/","additionalNames":[{"language":"eng","text":"NITRC"}],"contacts":[{"text":"moderator@nitrc.org"}]},{"country":"USA","responsibilityStartDate":null,"identifiers":[],"name":"Child
+        Mind Institute","responsibilityTypes":[{"text":"funding"}],"type":"non-profit","nameLanguage":"eng","responsibilityEndDate":null,"url":"https://childmind.org/","additionalNames":[],"contacts":[{"text":"https://childmind.org/about-us/contact-us/"}]}],"policies":[{"name":"How
+        to","url":"https://www.nitrc.org/plugins/mwiki/index.php/fcon_1000:MainPage"},{"name":"Disclaimer","url":"http://fcon1000.projects.nitrc.org/fcpClassic/FcpTable.html"}],"databaseLicenses":[],"dataAccesses":[{"restrictions":[],"type":"open"}],"dataLicenses":[{"name":"CC","url":"https://www.nitrc.org/include/glossary.php#546"},{"name":"ODC","url":"https://opendatacommons.org/licenses/pddl/1.0/"},{"name":"Apache
+        License 2.0","url":"http://www.apache.org/licenses/LICENSE-2.0.htm"},{"name":"BSD","url":"http://www.opensource.org/licenses/artistic-license.php"},{"name":"ODC","url":"http://opendatacommons.org/licenses/odbl/#sthash.SJBlh7SV.dpuf"}],"dataUploads":[{"restrictions":[{"text":"registration"}],"type":"restricted"}],"dataUploadLicenses":[],"software":[{"name":"other"}],"apis":[],"pidSystems":[{"text":"none"}],"aidSystems":[{"text":"none"}],"certificates":[],"metadataStandards":[],"syndications":[{"type":"RSS","url":"https://www.nitrc.org/export/rss20_newreleases.php?group_id=296"}],"databaseAccess":{"type":"open","restrictions":[]},"identifier":{"re3data":100011565,"doi":"10.17616/R3W05R"}},"sort":["1000
+        functional connectomes project"],"_explanation":{"value":1.2109796,"description":"product
+        of:","details":[{"value":2.4219592,"description":"sum of:","details":[{"value":2.4219592,"description":"weight(dataUploads.type:restricted
+        in 12763) [PerFieldSimilarity], result of:","details":[{"value":2.4219592,"description":"score(doc=12763,freq=1.0),
+        product of:","details":[{"value":0.51632535,"description":"queryWeight, product
+        of:","details":[{"value":4.6907616,"description":"idf(docFreq=636, maxDocs=25528)"},{"value":0.11007282,"description":"queryNorm"}]},{"value":4.6907616,"description":"fieldWeight
+        in 12763, product of:","details":[{"value":1.0,"description":"tf(freq=1.0),
+        with freq of:","details":[{"value":1.0,"description":"termFreq=1.0"}]},{"value":4.6907616,"description":"idf(docFreq=636,
+        maxDocs=25528)"},{"value":1.0,"description":"fieldNorm(doc=12763)"}]}]}]}]},{"value":0.5,"description":"coord(1/2)"}]}},{"_shard":3,"_node":"lFVkrbpVQmu9Q7GLIutDSQ","_index":"frontend","_type":"repository","_id":"153","_score":null,"_source":{"repositoryName":"1000
+        Genomes","repositoryNameLanguage":"eng","repositoryUrl":"http://www.internationalgenome.org/","description":"The
+        1000 Genomes Project is an international collaboration to produce an extensive
+        public catalog of human genetic variation, including SNPs and structural variants,
+        and their haplotype contexts. This resource will support genome-wide association
+        studies and other medical research studies.\r\nThe genomes of about 2500 unidentified
+        people from about 25 populations around the world will be sequenced using
+        next-generation sequencing technologies. The results of the study will be
+        freely and publicly accessible to researchers worldwide.\r\nThe International
+        Genome Sample Resource (IGSR) has been established at EMBL-EBI to continue
+        supporting data generated by the 1000 Genomes Project, supplemented with new
+        data and new analysis.","descriptionLanguage":"eng","size":"20.130.502.sequences","sizeUpdated":"2019-05-20","startDate":"2008","endDate":null,"missionStatementUrl":"http://www.internationalgenome.org/about#ProjectDataUse","versioning":"yes","citationGuidelineUrl":"http://www.internationalgenome.org/faq/how-do-i-cite-1000-genomes-project","enhancedPublication":"unknown","qualityManagement":"yes","remarks":"1000
+        Genomes is covered by Thomson Reuters Data Citation Index. The project unites
+        multidisciplinary research teams from institutes around the world, including
+        China, Italy, Japan, Kenya, Nigeria, Peru, the United Kingdom, and the United
+        States. Each will contribute to the enormous sequence dataset and to a refined
+        human genome map, which will be freely accessible through public databases
+        to the scientific community and the general public alike","created":"2013-01-08T09:39:15+01:00","updated":"2019-05-20T16:57:33+02:00","repositoryLanguages":[{"text":"eng"}],"types":[{"text":"disciplinary"},{"text":"institutional"}],"additionalNames":[{"language":"eng","text":"IGSR
+        - International Genome Sample Resource"},{"language":"eng","text":"Thousand
+        Genomes"}],"repositoryIdentifiers":[{"text":"RRID:nlx_143819"},{"text":"OMICS_00261"},{"text":"RRID:SCR_006828"},{"text":"biodbcore-001235"}],"repositoryContacts":[{"text":"info@1000genomes.org"}],"subjects":[{"scheme":"DFG","text":"20101
+        Biochemistry"},{"scheme":"DFG","text":"22 Medicine"},{"scheme":"DFG","text":"205
+        Medicine"},{"scheme":"DFG","text":"2 Life Sciences"},{"scheme":"DFG","text":"21
+        Biology"},{"scheme":"DFG","text":"201 Basic Biological and Medical Research"},{"scheme":"DFG","text":"20503
+        Human Genetics"},{"scheme":"DFG","text":"20107 Bioinformatics and Theoretical
+        Biology"}],"contentTypes":[{"scheme":"parse","text":"Standard office documents"},{"scheme":"parse","text":"Images"},{"scheme":"parse","text":"Structured
+        graphics"},{"scheme":"parse","text":"Scientific and statistical data formats"},{"scheme":"parse","text":"Raw
+        data"},{"scheme":"parse","text":"Plain text"}],"providerTypes":[{"text":"dataProvider"}],"keywords":[{"text":"genetics"},{"text":"genomics"},{"text":"DNA"},{"text":"gene"},{"text":"SNP
+        - single nucleotide polymorphism"},{"text":"medicine"},{"text":"pharmacology"},{"text":"biochemistry"},{"text":"bioinformatics"}],"institutions":[{"country":"GBR","responsibilityStartDate":null,"identifiers":[],"name":"Wellcome
+        Trust Sanger Institute","responsibilityTypes":[{"text":"funding"}],"type":"non-profit","nameLanguage":"eng","responsibilityEndDate":null,"url":"https://www.sanger.ac.uk/","additionalNames":[{"language":"eng","text":"Sanger"}],"contacts":[]},{"country":"EEC","responsibilityStartDate":null,"identifiers":[],"name":"European
+        Molecular Biology Laboratory, European Bioinformatics Institute","responsibilityTypes":[{"text":"technical"},{"text":"general"}],"type":"non-profit","nameLanguage":"eng","responsibilityEndDate":null,"url":"https://www.ebi.ac.uk/","additionalNames":[{"language":"eng","text":"EBI"}],"contacts":[{"text":"https://www.ebi.ac.uk/about/contact"}]},{"country":"USA","responsibilityStartDate":"2007","identifiers":[],"name":"National
+        Institutes of Health, National Human Genome Research Institute","responsibilityTypes":[{"text":"funding"}],"type":"non-profit","nameLanguage":"eng","responsibilityEndDate":null,"url":"https://www.genome.gov/","additionalNames":[{"language":"eng","text":"NHGRI"},{"language":"eng","text":"genome.gov"}],"contacts":[]},{"country":"USA","responsibilityStartDate":null,"identifiers":[],"name":"National
+        Center for Biotechnology Information","responsibilityTypes":[{"text":"funding"},{"text":"general"}],"type":"non-profit","nameLanguage":"eng","responsibilityEndDate":null,"url":"https://www.ncbi.nlm.nih.gov/","additionalNames":[{"language":"eng","text":"NCBI"}],"contacts":[]}],"policies":[{"name":"Data
+        reuse policy","url":"https://github.com/igsr/1000Genomes_data_indexes/blob/master/data_collections/hgsv_sv_discovery/README_hgsvc_datareuse_statement.md"},{"name":"Terms
+        of Use for EMBL-EBI Services","url":"https://www.ebi.ac.uk/about/terms-of-use"},{"name":"Using
+        data from IGSR","url":"http://www.internationalgenome.org/data"}],"databaseLicenses":[],"dataAccesses":[{"restrictions":[],"type":"open"}],"dataLicenses":[{"name":"other","url":"http://www.internationalgenome.org/IGSR_disclaimer"},{"name":"other","url":"https://www.ebi.ac.uk/about/terms-of-use"},{"name":"other","url":"http://www.internationalgenome.org/data#DataAccess"}],"dataUploads":[{"restrictions":[{"text":"other"}],"type":"restricted"}],"dataUploadLicenses":[{"name":"Sample
+        Collection principles","url":"http://www.internationalgenome.org/sample_collection_principles"}],"software":[{"name":"unknown"}],"apis":[{"type":"FTP","url":"ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/"}],"pidSystems":[{"text":"none"}],"aidSystems":[],"certificates":[],"metadataStandards":[],"syndications":[{"type":"RSS","url":"http://www.internationalgenome.org/announcements/rss.xml"}],"databaseAccess":{"type":"open","restrictions":[]},"identifier":{"re3data":100010180,"doi":"10.17616/R3CP4M"}},"sort":["1000
+        genomes"],"_explanation":{"value":1.2494826,"description":"product of:","details":[{"value":2.4989653,"description":"sum
+        of:","details":[{"value":2.4989653,"description":"weight(dataUploads.type:restricted
+        in 23208) [PerFieldSimilarity], result of:","details":[{"value":2.4989653,"description":"score(doc=23208,freq=1.0),
+        product of:","details":[{"value":0.5319958,"description":"queryWeight, product
+        of:","details":[{"value":4.6973405,"description":"idf(docFreq=611, maxDocs=24688)"},{"value":0.113254674,"description":"queryNorm"}]},{"value":4.6973405,"description":"fieldWeight
+        in 23208, product of:","details":[{"value":1.0,"description":"tf(freq=1.0),
+        with freq of:","details":[{"value":1.0,"description":"termFreq=1.0"}]},{"value":4.6973405,"description":"idf(docFreq=611,
+        maxDocs=24688)"},{"value":1.0,"description":"fieldNorm(doc=23208)"}]}]}]}]},{"value":0.5,"description":"coord(1/2)"}]}}]}}'
+    http_version: 
+  recorded_at: Thu, 01 Aug 2019 11:11:51 GMT
+recorded_with: VCR 3.0.3

@@ -20,6 +20,8 @@ gem 'git', '~> 1.5'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem 'rubocop', '~> 0.68.1', require: false
+  gem 'rubocop-performance', '~> 1.2', require: false
   gem "better_errors"
   gem "binding_of_caller"
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root :to => 'index#index'
 
-  get 'repositories/suggest', to: 'repositories#suggest'
-  get "/repositories/:id/badge", to: "repositories#badge", format: :svg, constraints: { :id => /.+/ }
+  get 're3data/suggest', to: 're3data#suggest'
+  get "/re3data/:id/badge", to: "re3data#badge", format: :svg, constraints: { :id => /.+/ }
 
   resources :index, only: [:index]
   resources :heartbeat, only: [:index]
 
-  resources :repositories, constraints: { :id => /.+/ }
+  resources :re3data, constraints: { :id => /.+/ }
 end
