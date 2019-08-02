@@ -18,6 +18,7 @@ class Repository
 
   attribute :types, String, mapping: { type: 'text' }
   attribute :additionalNames, String, mapping: { type: 'text' }
+  attribute :repositoryLanguages, String, mapping: { type: 'text' }
   attribute :subjects, String, mapping: { type: 'text' }
   attribute :contentTypes, String, mapping: { type: 'text' }
   attribute :certificates, String, mapping: { type: 'text' }

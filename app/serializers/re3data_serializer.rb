@@ -3,7 +3,7 @@ class Re3dataSerializer
   set_key_transform :camel_lower
   set_type :re3data
 
-  attributes :re3data_id, :repositoryName, :repositoryUrl, :repositoryContacts, :description, :certificates, :types, 
+  attributes :re3data_id, :repositoryName, :repositoryUrl, :repositoryContacts, :description, :repositoryLanguages, :certificates, :types, 
     :additionalNames, :subjects, :contentTypes, :providerTypes, 
     :keywords, :institutions, :dataAccesses, :dataUploads, :dataUploadLicenses, :pidSystems,
     :apis, :pidSystems, :software, :startDate, :endDate, :created, :updated
