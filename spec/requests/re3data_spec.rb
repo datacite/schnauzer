@@ -195,7 +195,7 @@ describe "Re3data", type: :request, vcr: true do
     context 'when the record does not exist' do
       it 'returns a not found message' do
         get "/re3data/xxx", nil, headers
-
+        puts last_response.body
         expect(last_response.status).to eq(404)
         expect(json["errors"].first).to eq("status"=>"404", "title"=>"The resource you are looking for doesn't exist.")
       end

@@ -4,13 +4,13 @@ module Indexable
   module ClassMethods
     # don't raise an exception when not found
     def find_by_id(id, options={})
-      id = doi_from_url(id).upcase
-      return nil unless id.present?
+      id = doi_from_url(id)
+      return [] unless id.present?
 
       __elasticsearch__.search(
         query: {
           match: {
-            "identifier.doi" => id
+            "identifier.doi" => id.upcase
           }
         })
     rescue Elasticsearch::Transport::Transport::Errors::NotFound, Elasticsearch::Transport::Transport::Errors::BadRequest, Elasticsearch::Persistence::Repository::DocumentNotFound
