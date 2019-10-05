@@ -4,10 +4,15 @@ module Indexable
   module ClassMethods
     # don't raise an exception when not found
     def find_by_id(id, options={})
+      id = doi_from_url(id).upcase
       return nil unless id.present?
 
-      __elasticsearch__.search(query: { match: { "identifier.doi" => id } })
-
+      __elasticsearch__.search(
+        query: {
+          match: {
+            "identifier.doi" => id
+          }
+        })
     rescue Elasticsearch::Transport::Transport::Errors::NotFound, Elasticsearch::Transport::Transport::Errors::BadRequest, Elasticsearch::Persistence::Repository::DocumentNotFound
       fail Elasticsearch::Transport::Transport::Errors::NotFound
     end
@@ -51,7 +56,7 @@ module Indexable
     def query(query, options={})
       query = query[3..-1] if query.present? && query.starts_with?("r3d")
       from = (options.dig(:page, :number) - 1) * options.dig(:page, :size)
-      sort = options[:sort]
+      sort = options[:sort] || { "repositoryName.sortable" => { order: "asc" }}
 
       must = [
         { terms: { "dataUploads.type" => ["open", "restricted"] }}
@@ -81,6 +86,13 @@ module Indexable
 
     def query_fields
       ['repositoryName^10', 'keywords.text^10', 'subjects.text^10', 'description^3', '_all']
+    end
+
+    def doi_from_url(url)
+      if /\A(?:(http|https):\/\/(dx\.)?(doi.org|handle.test.datacite.org)\/)?(doi:)?(10\.\d{4,5}\/.+)\z/.match?(url)
+        uri = Addressable::URI.parse(url)
+        uri.path.gsub(/^\//, "").downcase
+      end
     end
   end
 end

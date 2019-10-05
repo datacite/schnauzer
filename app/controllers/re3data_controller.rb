@@ -24,7 +24,7 @@ class Re3dataController < ApplicationController
     if params[:id].present?
       response = Repository.find_by_id(params[:id])
     elsif params[:ids].present?
-      response = Repository.find_by_ids(params[:ids], page: page, sort: sort)
+      response = Repository.find_by_id(params[:ids], page: page, sort: sort)
     else
       response = Repository.query(params[:query], 
         page: page, 

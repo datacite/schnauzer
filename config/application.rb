@@ -48,7 +48,11 @@ module Schnauzer
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-    
+
+    # include graphql
+    config.paths.add Rails.root.join('app', 'graphql', 'types').to_s, eager_load: true
+    # config.paths.add Rails.root.join('app', 'graphql', 'mutations').to_s, eager_load: true
+
     # config.autoload_paths << Rails.root.join('lib')
 
     # Settings in config/environments/* take precedence over those specified here.

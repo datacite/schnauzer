@@ -17,6 +17,13 @@ gem 'maremma', '>= 4.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors', '~> 1.0', '>= 1.0.2', :require => 'rack/cors'
 gem 'git', '~> 1.5'
+gem 'graphql', '~> 1.9', '>= 1.9.4'
+gem 'graphql-errors', '~> 0.3.0'
+gem 'graphql-batch', '~> 0.4.0'
+gem 'batch-loader', '~> 1.4', '>= 1.4.1'
+gem 'graphql-cache', '~> 0.6.0', git: "https://github.com/stackshareio/graphql-cache"
+gem 'apollo-federation', '~> 0.4.0'
+gem 'google-protobuf', '3.10.0.rc.1'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
