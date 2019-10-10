@@ -6,6 +6,7 @@ class DataCatalogType < BaseObject
   description "A collection of datasets."
 
   field :id, ID, null: false, description: "The ID of the data catalog."
+  field :type, String, null: false, description: "The type of the item."
   field :identifier, [IdentifierType], null: true, description: "re3data ID"
   field :name, String, null: true, hash_key: "repositoryName", description: "The name of the data catalog."
   field :alternate_name, [String], null: true, hash_key: "additionalNames", description: "An alias for the data catalog."
@@ -27,6 +28,10 @@ class DataCatalogType < BaseObject
 
   def id
     "https://doi.org/#{object.identifier["doi"].downcase}"
+  end
+
+  def type
+    "DataCatalog"
   end
 
   def identifier
