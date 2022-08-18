@@ -22,8 +22,8 @@ gem 'graphql-errors', '~> 0.3.0'
 gem 'graphql-batch', '~> 0.4.0'
 gem 'batch-loader', '~> 1.4', '>= 1.4.1'
 gem 'graphql-cache', '~> 0.6.0', git: "https://github.com/stackshareio/graphql-cache"
-gem 'apollo-federation', '~> 0.4.0'
-gem 'google-protobuf', '3.10.0.rc.1'
+gem 'apollo-federation', '~> 1.0'
+gem 'google-protobuf', '~> 3.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
