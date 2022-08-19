@@ -26,7 +26,7 @@ jobs:
       - name: Install
         run: |
           gem install bundler
-          bundle config set --local path 'vendor/bundle
+          bundle config set --local path 'vendor/bundle'
           bundle install --jobs 4 --retry 3
       - name: Lint and Test
         env:
