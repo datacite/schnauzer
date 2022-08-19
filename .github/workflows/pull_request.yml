@@ -11,8 +11,6 @@ jobs:
         image: memcached:1.4.31
         ports:
           - 11211/udp
-    env:
-      MEMCACHE_SERVERS: localhost:${{ job.services.memcached.ports[11211] }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby 2.7
