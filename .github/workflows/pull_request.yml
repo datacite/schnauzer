@@ -1,0 +1,40 @@
+name: Pull request
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      memcached:
+        image: memcached:1.4.31
+        ports:
+          - 11211/tcp
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby 2.7
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7.6'
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Install
+        run: |
+          gem install bundler
+          bundle config set --local path 'vendor/bundle'
+          bundle install --jobs 4 --retry 3
+      - name: Lint and Test
+        env:
+          MEMCACHE_SERVERS: localhost:${{ job.services.memcached.ports[11211] }}
+          ES_HOST: ${{ secrets.RE3DATA_ES_HOST }}
+          ELASTIC_USER: ${{ secrets.RE3DATA_ES_USER }}
+          ELASTIC_PASSWORD: ${{ secrets.RE3DATA_ES_PASSWORD }}
+        run: |
+          # bundle exec rubocop
+          bundle exec rspec
+          echo $?
