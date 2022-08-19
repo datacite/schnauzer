@@ -73,13 +73,17 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get git tag
+        run: |
+          echo "::set-output name=GIT_TAG::$(git tag --points-at HEAD)"
+        id: set_git_vars
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ github.repository }}:latest
+          tags: ${{ github.repository }}:${{ steps.set_git_vars.outputs.GIT_TAG }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
       - name: Push to GitHub Packages
@@ -88,7 +92,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository }}:latest
+          tags: ghcr.io/${{ github.repository }}:${{ steps.set_git_vars.outputs.GIT_TAG }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
@@ -108,7 +112,6 @@ jobs:
           echo "::set-output name=TAG::$(git tag --points-at HEAD)"
           echo "::set-output name=GIT_SHA::$(git rev-parse HEAD)"
           echo "::set-output name=GIT_SHA_SHORT::$(git rev-parse --short HEAD)"
-          echo "::set-output name=MESSAGE::$(git log --format=%B -n 1 ${{ github.event.after }})"
         id: extract_variables
 
       - name: Checkout terraform config repo
@@ -131,7 +134,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add prod-eu-west/services/re3data/_schnauzer.auto.tfvars
-          git commit -m "Adding schnauzer git variables for commit ${{ steps.extract_variables.outputs.GIT_SHA }}"
+          git commit -m "Adding schnauzer git variables for commit ${{ steps.extract_variables.outputs.GIT_TAG }}"
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
@@ -148,8 +151,7 @@ jobs:
           text: 'Version <https://github.com/${{ github.repository }}/releases/tag/${{ steps.extract_variables.outputs.TAG }}|${{ steps.extract_variables.outputs.TAG }}> of the Re3data API has been deployed to production.'
           failure_text: '${env.GITHUB_WORKFLOW} (${env.GITHUB_RUN_NUMBER}) build failed'
           fields: |
-            [{ "title": "Commit message", "value": "${{ steps.extract_variables.outputs.MESSAGE }}" },
              { "title": "Committed by", "value": "<https://github.com/${{ github.repository }}/commits?author=${{ github.actor }}|${{ github.actor }}>", "short": true },
              { "title": "Commit SHA", "value": "<https://github.com/${{ github.repository }}/commit/${{ steps.extract_variables.outputs.GIT_SHA }}|${{ steps.extract_variables.outputs.GIT_SHA_SHORT }}>", "short": true },
              { "title": "Repository", "value": "<https://github.com/${{ github.repository }}|${{ github.repository }}>", "short": true },
-             { "title": "Branch", "value": "<https://github.com/${{ github.repository }}/tree/${{ steps.extract_variables.outputs.BRANCH }}|${{ steps.extract_variables.outputs.BRANCH }}>", "short": true }]
+             { "title": "Release", "value": "<https://github.com/${{ github.repository }}/releases/tag/${{ steps.extract_variables.outputs.TAG }}|${{ steps.extract_variables.outputs.TAG }}>", "short": true }]
