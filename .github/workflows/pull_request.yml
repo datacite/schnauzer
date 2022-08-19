@@ -10,7 +10,7 @@ jobs:
       memcached:
         image: memcached:1.4.31
         ports:
-          - 11211/udp
+          - 11211/tcp
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby 2.7
