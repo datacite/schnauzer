@@ -10,9 +10,8 @@ jobs:
       memcached:
         image: memcached:1.4.31
         ports:
-          - 11211/udp
+          - 11211/tcp
     env:
-      MEMCACHE_SERVERS: "localhost:11211"
       ES_HOST: ${{ secrets.RE3DATA_ES_HOST }}
       ELASTIC_USER: ${{ secrets.RE3DATA_ES_USER }}
       ELASTIC_PASSWORD: ${{ secrets.RE3DATA_ES_PASSWORD }}
@@ -35,7 +34,7 @@ jobs:
           bundle install --jobs 4 --retry 3
       - name: Lint and Test
         env:
-          MEMCACHE_SERVERS: "localhost:11211"
+          MEMCACHE_SERVERS: "localhost:${{ job.services.memcached.ports[11211] }}"
           ES_HOST: ${{ secrets.RE3DATA_ES_HOST }}
           ELASTIC_USER: ${{ secrets.RE3DATA_ES_USER }}
           ELASTIC_PASSWORD: ${{ secrets.RE3DATA_ES_PASSWORD }}
