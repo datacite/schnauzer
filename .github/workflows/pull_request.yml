@@ -12,7 +12,7 @@ jobs:
         ports:
           - 11211/udp
     env:
-      MEMCACHE_SERVERS: "localhost:${{ job.services.memcached.ports[11211] }}"
+      MEMCACHE_SERVERS: localhost:${{ job.services.memcached.ports[11211] }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby 2.7
@@ -32,7 +32,7 @@ jobs:
           bundle install --jobs 4 --retry 3
       - name: Lint and Test
         env:
-          MEMCACHE_SERVERS: "localhost:${{ job.services.memcached.ports[11211] }}"
+          MEMCACHE_SERVERS: localhost:${{ job.services.memcached.ports[11211] }}
           ES_HOST: ${{ secrets.RE3DATA_ES_HOST }}
           ELASTIC_USER: ${{ secrets.RE3DATA_ES_USER }}
           ELASTIC_PASSWORD: ${{ secrets.RE3DATA_ES_PASSWORD }}
