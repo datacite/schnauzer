@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.1.6'
 gem 'dotenv'
 gem "dalli", "~> 2.7.6"
 gem 'lograge', '~> 0.5'
@@ -26,8 +26,8 @@ gem 'apollo-federation', '~> 1.0'
 gem 'google-protobuf', '~> 3.0'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
-  gem 'rubocop', '~> 0.68.1', require: false
+  gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
+  gem 'rubocop', '~> 1.3', require: false
   gem 'rubocop-performance', '~> 1.2', require: false
   gem "better_errors"
   gem "binding_of_caller"
