@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/datacite/schnauzer/tree/HEAD)
+## [1.4.0](https://github.com/datacite/schnauzer/tree/1.4.0) (2022-08-19)
 
-[Full Changelog](https://github.com/datacite/schnauzer/compare/1.3.5...HEAD)
+[Full Changelog](https://github.com/datacite/schnauzer/compare/1.3.5...1.4.0)
 
 **Closed issues:**
 
