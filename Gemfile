@@ -23,7 +23,7 @@ gem 'graphql-batch', '~> 0.4.0'
 gem 'batch-loader', '~> 1.4', '>= 1.4.1'
 gem 'graphql-cache', '~> 0.6.0', git: "https://github.com/stackshareio/graphql-cache"
 gem 'apollo-federation', '~> 1.0'
-gem 'google-protobuf', '~> 3.0'
+gem 'google-protobuf', '~> 3.21'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
