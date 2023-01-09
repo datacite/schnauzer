@@ -16,7 +16,7 @@ gem 'elasticsearch-rails', '~> 0.1.9'
 gem 'maremma', '>= 4.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors', '~> 1.0', :require => 'rack/cors'
-gem 'git', '~> 1.5'
+gem 'git', '~> 1.13'
 gem 'graphql', '~> 1.9', '>= 1.9.4'
 gem 'graphql-errors', '~> 0.3.0'
 gem 'graphql-batch', '~> 0.4.0'
