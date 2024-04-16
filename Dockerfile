@@ -1,4 +1,4 @@
-FROM phusion/passenger-full:2.3.0
+FROM phusion/passenger-full:2.5.1
 LABEL maintainer="tech@datacite.org"
 
 # Set correct environment variables.
@@ -10,8 +10,8 @@ RUN usermod -a -G docker_env app
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
 
-# Install Ruby 2.7.6
-RUN bash -lc 'rvm --default use ruby-2.7.6'
+# Install Ruby 3.1.4
+RUN bash -lc 'rvm --default use ruby-3.1.4'
 
 # Update installed APT packages
 RUN apt-get update -y -o Dpkg::Options::="--force-confold" && \
