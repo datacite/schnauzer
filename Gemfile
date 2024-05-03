@@ -7,7 +7,7 @@ gem "dalli", "~> 2.7.6"
 gem 'lograge', '~> 0.5'
 gem 'sentry-raven', '~> 2.9'
 gem 'active_model_serializers', '~> 0.10.0'
-gem 'fast_jsonapi', '~> 1.3'
+gem 'jsonapi-serializer', '~> 2.2'
 gem 'kaminari', '~> 1.2'
 gem 'elasticsearch', '~> 1.1', '>= 1.1.3'
 gem 'elasticsearch-model', '~> 0.1.9', require: 'elasticsearch/model'
@@ -45,7 +45,7 @@ end
 group :test do
   gem 'capybara'
   gem 'webmock', '~> 3.1'
-  gem 'vcr', '~> 3.0.3'
+  gem 'vcr', '~> 6.1'
   gem 'codeclimate-test-reporter', '~> 1.0.0'
   gem 'simplecov'
   gem 'shoulda-matchers', '~> 3.1'
