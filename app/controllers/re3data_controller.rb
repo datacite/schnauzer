@@ -2,7 +2,6 @@ class Re3dataController < ApplicationController
   before_action :set_repository, only: [:show, :badge]
 
   def index
-    debugger
     sort = case params[:sort]
            when "relevance" then { _score: { order: 'desc' }}
            when "name" then { "repositoryName.sortable" => { order: 'asc' }}
