@@ -12,7 +12,7 @@ class Re3dataController < ApplicationController
            end
 
     page = params[:page] || {}
-    if page[:size].present? 
+    if page[:size].present?
       page[:size] = [page[:size].to_i, 1000].min
       max_number = page[:size] > 0 ? 10000/page[:size] : 1
     else
@@ -26,11 +26,11 @@ class Re3dataController < ApplicationController
     elsif params[:ids].present?
       response = Repository.find_by_id(params[:ids], page: page, sort: sort)
     else
-      response = Repository.query(params[:query], 
-        page: page, 
-        sort: sort, 
+      response = Repository.query(params[:query],
+        page: page,
+        sort: sort,
         subject: params[:subject],
-        open: params[:open], 
+        open: params[:open],
         certified: params[:certified],
         pid: params[:pid],
         software: params[:software],
@@ -59,7 +59,7 @@ class Re3dataController < ApplicationController
       }.compact
     options[:is_collection] = true
 
-    render json: Re3dataSerializer.new(@repositories, options).serialized_json, status: :ok
+    render json: Re3dataSerializer.new(@repositories, options).serializable_hash.to_json, status: :ok
   rescue Elasticsearch::Transport::Transport::Errors::LengthRequired
     render json: []
   end
@@ -68,7 +68,7 @@ class Re3dataController < ApplicationController
     options = {}
     options[:is_collection] = false
 
-    render json: Re3dataSerializer.new(@repository, options).serialized_json, status: :ok
+    render json: Re3dataSerializer.new(@repository, options).serializable_hash.to_json, status: :ok
   end
 
   def suggest
