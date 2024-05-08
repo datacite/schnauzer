@@ -47,7 +47,7 @@ ENV['TRUSTED_IP'] ||= "10.0.50.1"
 module Schnauzer
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    config.load_defaults 7.1
 
     # include graphql
     config.paths.add Rails.root.join('app', 'graphql', 'types').to_s, eager_load: true
@@ -78,7 +78,7 @@ module Schnauzer
     # add elasticsearch instrumentation to logs
     require 'elasticsearch/rails/instrumentation'
     require 'elasticsearch/rails/lograge'
-    
+
     # configure caching
     config.cache_store = :dalli_store, nil, { :namespace => ENV['APPLICATION'] }
   end

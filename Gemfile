@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 6.1.6'
+gem "rails", "~> 7.1", ">= 7.1.3"
 gem 'dotenv'
 gem "dalli", "~> 2.7.6"
 gem 'lograge', '~> 0.5'
-gem 'sentry-raven', '~> 2.9'
+gem "sentry-raven", "~> 3.1", ">= 3.1.2"
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'jsonapi-serializer', '~> 2.2'
 gem 'kaminari', '~> 1.2'
@@ -13,7 +13,7 @@ gem 'elasticsearch', '~> 1.1', '>= 1.1.3'
 gem 'elasticsearch-model', '~> 0.1.9', require: 'elasticsearch/model'
 gem 'elasticsearch-persistence', '~> 0.1.9', require: 'elasticsearch/persistence/model'
 gem 'elasticsearch-rails', '~> 0.1.9'
-gem 'maremma', '>= 4.1'
+gem "maremma", "~> 5.0"
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors', '~> 1.0', :require => 'rack/cors'
 gem 'git', '~> 1.5'
