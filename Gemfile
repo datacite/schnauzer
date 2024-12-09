@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails", "~> 7.1", ">= 7.1.3"
 gem 'dotenv'
-gem "dalli", "~> 2.7.6"
+gem "dalli", "~> 3.2.3"
 gem 'lograge', '~> 0.5'
 gem "sentry-raven", "~> 3.1", ">= 3.1.2"
 gem 'active_model_serializers', '~> 0.10.0'
